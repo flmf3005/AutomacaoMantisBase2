@@ -14,7 +14,6 @@ namespace AutomacaoMantisBase2.Testes
         public void acessarLoginPage()
         {
             PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
-
             loginPage.verificaLoginPage();
         }
 
@@ -22,7 +21,6 @@ namespace AutomacaoMantisBase2.Testes
         public void inserirUsername()
         {
             PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
-
             loginPage.inserirUsername();
         }
 
@@ -30,9 +28,7 @@ namespace AutomacaoMantisBase2.Testes
         public void loginSucesso()
         {
             PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
-
             loginPage.inserirUsername();
-
             loginPage.inserirSenha();
         }
 
@@ -40,9 +36,7 @@ namespace AutomacaoMantisBase2.Testes
         public void loginFalha()
         {
             PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
-
             loginPage.inserirUsername();
-
             loginPage.inserirSenhaIncorreta();
         }
 
@@ -50,15 +44,13 @@ namespace AutomacaoMantisBase2.Testes
         public void loginVazio()
         {
             PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
-
             loginPage.inserirUsernameVazio();
         }
 
         [Test]
-        public void criarConta()
+        public void acessarCriarConta()
         {
             PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
-
             loginPage.clicarBtnCriarConta();
         }
     }

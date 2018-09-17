@@ -2,12 +2,9 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AutomacaoMantisBase2.Uteis
 {
@@ -28,25 +25,25 @@ namespace AutomacaoMantisBase2.Uteis
 
             //Concatenar Path diretorio + Path Drivers
             String strAppFolderData = String.Concat(aux, "\\Drivers");
-
             return strAppFolderData; //+ strAppFolderData;
         }
 
-        public static void esperaElemento(IWebElement elemento, String valor)
+        public static void esperaElemento(IWebElement element)
         {
             WebDriverWait espera = new WebDriverWait(WebDriver.driver, timeout: TimeSpan.FromSeconds(30));
-
-            espera.Until(condition: SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(elemento));
+            espera.Until(condition: SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(element));
         }
 
         public static void preencherTxtField(String value, IWebElement element)
         {
+            esperaElemento(element);
             element.Clear();
             element.SendKeys(value);
         }
 
         public static void clicarBtn(IWebElement element)
         {
+            esperaElemento(element);
             element.Click();
         }
     }
