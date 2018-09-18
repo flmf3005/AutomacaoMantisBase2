@@ -1,5 +1,6 @@
 ﻿using AutomacaoMantisBase2.Drivers;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,6 @@ namespace AutomacaoMantisBase2.PageObjects
         }
 
         public IWebElement LnkAtrbuidosAMim => driver.FindElement(By.LinkText("Atribuídos a Mim (não resolvidos)"));
-
+        
     }
 }

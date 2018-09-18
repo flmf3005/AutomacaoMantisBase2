@@ -14,19 +14,13 @@ namespace AutomacaoMantisBase2.PageObjects
         }
 
         public IWebElement FldEntrar => driver.FindElement(By.XPath("//div[@id='login-box']/div/div/h4"));
-
         public IWebElement TxtUserName => driver.FindElement(By.Id("username"));
-
         public IWebElement BtnEntrar => driver.FindElement(By.XPath("//input[@value='Entrar']"));
-
         public IWebElement TxtSenha => driver.FindElement(By.Id("password"));
-
         public IWebElement LnkPerdeuSenha => driver.FindElement(By.LinkText("Perdeu a sua senha?"));
-
         public IWebElement BtnUserInfo => driver.FindElement(By.CssSelector("span.user-info"));
-
         public IWebElement LnkCriarNovaConta => driver.FindElement(By.LinkText("criar uma nova conta"));
-
+        public IWebElement LnkSair => driver.FindElement(By.LinkText("Sair"));
         public void verificaLoginPage()
         {
             Uteis.Uteis.esperaElemento(element: FldEntrar);

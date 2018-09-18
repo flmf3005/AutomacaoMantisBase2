@@ -19,6 +19,7 @@ namespace AutomacaoMantisBase2.PageObjects
         public IWebElement FldDescricao => driver.FindElement(By.Id("description"));
         public IWebElement ChBContinuar => driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Continuar Relatando'])[1]/following::span[1]"));
         public IWebElement BtnCriarTarefa => driver.FindElement(By.XPath("//input[@value='Criar Nova Tarefa']"));
+        public IWebElement LnkCriarTarefa => driver.FindElement(By.LinkText("Criar Tarefa"));
         public IWebElement BtnTarefaCriada => driver.FindElement(By.XPath("//a[contains(text(),'Visualizar Tarefa Enviada')]"));
         
         public string idTarefaCriada (IWebElement element)

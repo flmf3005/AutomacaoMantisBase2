@@ -104,5 +104,69 @@ namespace AutomacaoMantisBase2.Testes
             Uteis.Uteis.esperaElemento(homePageObjects.TitInformacao);
             Assert.AreEqual("Informação do Site", homePageObjects.TitInformacao.Text);
         }
+
+        [Test]
+        public void acessarMinhaContaPage()
+        {
+            LoginTestes loginTest = new LoginTestes();
+            PageObjects.HomePageObjects homePageObjects = new PageObjects.HomePageObjects(driver);
+            PageObjects.MyViewPageObjects myViewPageObjects = new PageObjects.MyViewPageObjects(driver);
+            loginTest.loginSucesso();
+            Uteis.Uteis.clicarBtn(homePageObjects.BtnUserInfo);
+            Uteis.Uteis.clicarBtn(homePageObjects.LnkMinhaConta);
+            Assert.AreEqual("Alterar Conta", homePageObjects.TitInformacao.Text);
+        }
+
+        [Test]
+        public void acessarPreferenciasContaPage()
+        {
+            LoginTestes loginTest = new LoginTestes();
+            PageObjects.HomePageObjects homePageObjects = new PageObjects.HomePageObjects(driver);
+            PageObjects.MyViewPageObjects myViewPageObjects = new PageObjects.MyViewPageObjects(driver);
+            loginTest.loginSucesso();
+            Uteis.Uteis.clicarBtn(homePageObjects.BtnUserInfo);
+            Uteis.Uteis.clicarBtn(homePageObjects.LnkMinhaConta);
+            Uteis.Uteis.clicarBtn(homePageObjects.LnkPreferencias);
+            Assert.AreEqual("Preferências da Conta", homePageObjects.TitInformacao.Text);
+        }
+
+        [Test]
+        public void acessarGerenciarColunasContaPage()
+        {
+            LoginTestes loginTest = new LoginTestes();
+            PageObjects.HomePageObjects homePageObjects = new PageObjects.HomePageObjects(driver);
+            PageObjects.MyViewPageObjects myViewPageObjects = new PageObjects.MyViewPageObjects(driver);
+            loginTest.loginSucesso();
+            Uteis.Uteis.clicarBtn(homePageObjects.BtnUserInfo);
+            Uteis.Uteis.clicarBtn(homePageObjects.LnkMinhaConta);
+            Uteis.Uteis.clicarBtn(homePageObjects.LnkGerenciarColunas);
+            Assert.AreEqual("Gerenciar Colunas", homePageObjects.TitInformacao.Text);
+        }
+
+        [Test]
+        public void acessarPerfisContaPage()
+        {
+            LoginTestes loginTest = new LoginTestes();
+            PageObjects.HomePageObjects homePageObjects = new PageObjects.HomePageObjects(driver);
+            PageObjects.MyViewPageObjects myViewPageObjects = new PageObjects.MyViewPageObjects(driver);
+            loginTest.loginSucesso();
+            Uteis.Uteis.clicarBtn(homePageObjects.BtnUserInfo);
+            Uteis.Uteis.clicarBtn(homePageObjects.LnkMinhaConta);
+            Uteis.Uteis.clicarBtn(homePageObjects.LnkPerfis);
+            Assert.AreEqual("Adicionar Perfil", homePageObjects.TitInformacao.Text);
+        }
+
+        [Test]
+        public void acessarTokensAPIContaPage()
+        {
+            LoginTestes loginTest = new LoginTestes();
+            PageObjects.HomePageObjects homePageObjects = new PageObjects.HomePageObjects(driver);
+            PageObjects.MyViewPageObjects myViewPageObjects = new PageObjects.MyViewPageObjects(driver);
+            loginTest.loginSucesso();
+            Uteis.Uteis.clicarBtn(homePageObjects.BtnUserInfo);
+            Uteis.Uteis.clicarBtn(homePageObjects.LnkMinhaConta);
+            Uteis.Uteis.clicarBtn(homePageObjects.LnkTokensAPI);
+            Assert.AreEqual("Criar token API", homePageObjects.TitInformacao.Text);
+        }
     }
 }

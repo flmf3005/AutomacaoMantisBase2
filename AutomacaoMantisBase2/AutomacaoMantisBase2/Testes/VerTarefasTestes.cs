@@ -1,22 +1,28 @@
 ﻿using AutomacaoMantisBase2.Drivers;
+using AutomacaoMantisBase2.PageObjects;
 using NUnit.Framework;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutomacaoMantisBase2.Testes
 {
     public class VerTarefasTestes : WebDriver
     {
-        public void acessarGerenciarUsuariosPage()
+
+        [Test]
+        public void deletarTarefasTotal()
         {
             HomeTestes homeTest = new HomeTestes();
-            PageObjects.GerenciarPageObjects gerenciarPageObjects = new PageObjects.GerenciarPageObjects(driver);
-            homeTest.acessarGerenciarPage();
-            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnUsuarios);
-            Assert.AreEqual(true, gerenciarPageObjects.TitUsuarios.Displayed);
+            VerTarefasPageObjects verTarefasPageObjects = new VerTarefasPageObjects(driver);
+            homeTest.acessarVerTarefasPage();
+            verTarefasPageObjects.deletarTudo();
+            Assert.AreEqual(0, verTarefasPageObjects.totalBugs());
         }
+
     }
 }

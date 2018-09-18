@@ -33,6 +33,16 @@ namespace AutomacaoMantisBase2.Testes
         }
 
         [Test]
+        public void logoffSucesso()
+        {
+            PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
+            loginSucesso();
+            Uteis.Uteis.clicarBtn(loginPage.BtnUserInfo);
+            Uteis.Uteis.clicarBtn(loginPage.LnkSair);
+            loginPage.verificaLoginPage();
+        }
+
+        [Test]
         public void loginFalha()
         {
             PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);

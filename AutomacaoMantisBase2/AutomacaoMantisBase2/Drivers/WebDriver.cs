@@ -22,8 +22,6 @@ namespace AutomacaoMantisBase2.Drivers
             //Criei um método que retorna o path do driver: SeleniumUteis.SeleniumUteis.getPathSeleniumDriver
             driver = new ChromeDriver(Uteis.Uteis.getPathSeleniumDriver());
 
-
-
             //Ação que navega para o site
             driver.Navigate().GoToUrl("http://mantis.fernando.base2.com.br");
 
