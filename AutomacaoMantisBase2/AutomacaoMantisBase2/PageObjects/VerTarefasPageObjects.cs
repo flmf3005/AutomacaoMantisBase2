@@ -18,10 +18,15 @@ namespace AutomacaoMantisBase2.PageObjects
         public IWebElement DivFiltros => driver.FindElement(By.XPath("//div[@id='filter']/div/h4"));
         public IWebElement ChBoxSelTudo => driver.FindElement(By.XPath("//form[@id='bug_action']/div/div[2]/div[2]/div[2]/div/label/span"));
         public IWebElement ComboBoxAcoes => driver.FindElement(By.Name("action"));
+        public IWebElement ComboBoxPrioridade => driver.FindElement(By.Name("priority"));
         public IWebElement BtnOk => driver.FindElement(By.XPath("//input[@value='OK']"));
         public IWebElement BtnApagarTarefas => driver.FindElement(By.XPath("//input[@value='Apagar Tarefas']"));
         public IWebElement LblBugs => driver.FindElement(By.XPath("//form[@id='bug_action']/div/div/h4/span"));
         public IWebElement TxtBuscar => driver.FindElement(By.Id("filter-search-txt"));
+        public IWebElement BtnAplicarFiltro => driver.FindElement(By.XPath("//input[@name='filter_submit']"));
+        public IWebElement PrioridadeTarefaFiltro => driver.FindElement(By.XPath("//table[@id='buglist']/tbody/tr/td[3]/i"));
+        public IWebElement PrioridadeAlta => driver.FindElement(By.CssSelector("i.fa.fa-chevron-up.fa-lg.red"));
+        public IWebElement BtnAtualizarPrioridade => driver.FindElement(By.XPath("//input[@value='Atualizar Prioridade']"));
 
         public int totalBugs()
         {
@@ -33,6 +38,10 @@ namespace AutomacaoMantisBase2.PageObjects
             return totalBugs;
         }
 
+        public IWebElement LnkTarefaCriada(string nomTarefa)
+        {
+            return driver.FindElement(By.LinkText(nomTarefa));
+        }
         public void deletarTudo()
         {
             Uteis.Uteis.esperaElemento(LblBugs);
@@ -47,7 +56,19 @@ namespace AutomacaoMantisBase2.PageObjects
                 Uteis.Uteis.clicarBtn(BtnApagarTarefas);
                 qntBugs = totalBugs();
             }
+        }
 
+        public void alterarPrioridade()
+        {
+            Uteis.Uteis.clicarBtn(ChBoxSelTudo);
+            Uteis.Uteis.clicarBtn(ComboBoxAcoes);
+            var selectElement = new SelectElement(ComboBoxAcoes);
+            selectElement.SelectByText("Atualizar Prioridade");
+            Uteis.Uteis.clicarBtn(BtnOk);
+            Uteis.Uteis.clicarBtn(ComboBoxPrioridade);
+            selectElement = new SelectElement(ComboBoxPrioridade);
+            selectElement.SelectByText("alta");
+            Uteis.Uteis.clicarBtn(BtnAtualizarPrioridade);
         }
 
     }

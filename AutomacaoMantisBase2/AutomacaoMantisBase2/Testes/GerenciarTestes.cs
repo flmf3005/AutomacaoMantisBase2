@@ -143,38 +143,143 @@ namespace AutomacaoMantisBase2.Testes
         [Test]
         public void criarNovoProjeto()
         {
-            HomeTestes homeTest = new HomeTestes();
             PageObjects.GerenciarPageObjects gerenciarPageObjects = new PageObjects.GerenciarPageObjects(driver);
-            homeTest.acessarGerenciarPage();
+            String nome = String.Concat("Projeto Teste ", Uteis.Uteis.geraNomeRandom());
+            acessarGerenciarProjetosPage();
             Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnProjetos);
             Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnNovoProjeto);
-            Uteis.Uteis.preencherTxtField(ConfigurationManager.AppSettings["projetocriado".ToString()], gerenciarPageObjects.TxtFldNomeProjeto);
+            Uteis.Uteis.preencherTxtField(nome, gerenciarPageObjects.TxtFldNomeProjeto);
             Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarProjeto);
-            Assert.AreEqual(true, gerenciarPageObjects.VerificaProjeto(ConfigurationManager.AppSettings["projetocriado".ToString()]));
+            Assert.AreEqual(true, gerenciarPageObjects.VerificaProjeto(nome));
+        }
+
+        [Test]
+        public void validarProjetoDuplicado()
+        {
+            PageObjects.GerenciarPageObjects gerenciarPageObjects = new PageObjects.GerenciarPageObjects(driver);
+            String nome = String.Concat("Usuario Teste ", Uteis.Uteis.geraNomeRandom());
+            acessarGerenciarProjetosPage();
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnProjetos);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnNovoProjeto);
+            Uteis.Uteis.preencherTxtField(nome, gerenciarPageObjects.TxtFldNomeProjeto);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarProjeto);
+            Thread.Sleep(5000);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnNovoProjeto);
+            Uteis.Uteis.preencherTxtField(nome, gerenciarPageObjects.TxtFldNomeProjeto);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarProjeto);
+            Assert.AreEqual(true, gerenciarPageObjects.MsgErro.Displayed);
+        }
+
+        [Test]
+        public void criarNovoMarcador()
+        {
+            PageObjects.GerenciarPageObjects gerenciarPageObjects = new PageObjects.GerenciarPageObjects(driver);
+            String nome = String.Concat("Marcador Teste ", Uteis.Uteis.geraNomeRandom());
+            acessarGerenciarMarcadoresPage();
+            Uteis.Uteis.preencherTxtField(nome, gerenciarPageObjects.TxtFldMarcador);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarMarcador);
+            Assert.AreEqual(true, gerenciarPageObjects.LnkMarcadorCriado(nome).Displayed);
+        }
+
+        [Test]
+        public void criarNovoCampoPers()
+        {
+            PageObjects.GerenciarPageObjects gerenciarPageObjects = new PageObjects.GerenciarPageObjects(driver);
+            String nome = String.Concat("Campo Teste ", Uteis.Uteis.geraNomeRandom());
+            acessarGerenciarCamposPersonalizadosPage();
+            Uteis.Uteis.preencherTxtField(nome, gerenciarPageObjects.TxtFldNomeCampo);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnNovoCampo);
+            Thread.Sleep(5000);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCampPers);
+            Assert.AreEqual(true, gerenciarPageObjects.LnkCampoCriado(nome).Displayed);
+        }
+
+        [Test]
+        public void deletarCampoPers()
+        {
+            PageObjects.GerenciarPageObjects gerenciarPageObjects = new PageObjects.GerenciarPageObjects(driver);
+            String nome = String.Concat("Campo Teste ", Uteis.Uteis.geraNomeRandom());
+            acessarGerenciarCamposPersonalizadosPage();
+            Uteis.Uteis.preencherTxtField(nome, gerenciarPageObjects.TxtFldNomeCampo);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnNovoCampo);
+            Thread.Sleep(5000);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCampPers);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.LnkCampoCriado(nome));
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnApagarCampoPers);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnConfirmaApagarCampo);
+            Assert.AreEqual(true, gerenciarPageObjects.MsgSucesso.Displayed);
+        }
+
+        [Test]
+        public void validarCampoPersDuplicado()
+        {
+            PageObjects.GerenciarPageObjects gerenciarPageObjects = new PageObjects.GerenciarPageObjects(driver);
+            String nome = String.Concat("Campo Teste ", Uteis.Uteis.geraNomeRandom());
+            acessarGerenciarCamposPersonalizadosPage();
+            Uteis.Uteis.preencherTxtField(nome, gerenciarPageObjects.TxtFldNomeCampo);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnNovoCampo);
+            Thread.Sleep(5000);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCampPers);
+            Uteis.Uteis.preencherTxtField(nome, gerenciarPageObjects.TxtFldNomeCampo);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnNovoCampo);
+            Assert.AreEqual(true, gerenciarPageObjects.MsgErro.Displayed);
+        }
+
+        [Test]
+        public void validarCampoPersVazio()
+        {
+            PageObjects.GerenciarPageObjects gerenciarPageObjects = new PageObjects.GerenciarPageObjects(driver);
+            String nome = String.Concat("Campo Teste ", Uteis.Uteis.geraNomeRandom());
+            acessarGerenciarCamposPersonalizadosPage();
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnNovoCampo);
+            Assert.AreEqual(true, gerenciarPageObjects.MsgErro.Displayed);
         }
 
         [Test]
         public void criarNovoUsuario()
         {
-            HomeTestes homeTest = new HomeTestes();
             PageObjects.GerenciarPageObjects gerenciarPageObjects = new PageObjects.GerenciarPageObjects(driver);
-            homeTest.acessarGerenciarPage();
-            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnUsuarios);
+            String nome = String.Concat("Usuario Teste ", Uteis.Uteis.geraNomeRandom());
+            acessarGerenciarUsuariosPage();
             Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarConta);
-            Uteis.Uteis.preencherTxtField(ConfigurationManager.AppSettings["usuariocriado".ToString()], gerenciarPageObjects.TxtFldNomeUsuario);
+            Uteis.Uteis.preencherTxtField(nome, gerenciarPageObjects.TxtFldNomeUsuario);
             Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarUsuario);
             Thread.Sleep(5000);
             Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnUsuarios);
-            Assert.AreEqual(true, gerenciarPageObjects.LnkUsuarioCriado.Displayed);
+            Assert.AreEqual(true, gerenciarPageObjects.LnkUsuarioCriado(nome).Displayed);
+        }
+
+
+        [Test]
+        public void validarUsuarioDuplicado()
+        {
+            PageObjects.GerenciarPageObjects gerenciarPageObjects = new PageObjects.GerenciarPageObjects(driver);
+            String nome = String.Concat("Usuario Teste ", Uteis.Uteis.geraNomeRandom());
+            acessarGerenciarUsuariosPage();
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarConta);
+            Uteis.Uteis.preencherTxtField(nome, gerenciarPageObjects.TxtFldNomeUsuario);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarUsuario);
+            Thread.Sleep(5000);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnUsuarios);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarConta);
+            Uteis.Uteis.preencherTxtField(nome, gerenciarPageObjects.TxtFldNomeUsuario);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarUsuario);          
+            Assert.AreEqual(true, gerenciarPageObjects.MsgErro.Displayed);
         }
 
         [Test]
         public void alterarNomeUsuario()
         {
             PageObjects.GerenciarPageObjects gerenciarPageObjects = new PageObjects.GerenciarPageObjects(driver);
-            criarNovoUsuario();
-            Uteis.Uteis.clicarBtn(gerenciarPageObjects.LnkUsuarioCriado);
-            Uteis.Uteis.preencherTxtField(String.Concat(ConfigurationManager.AppSettings["usuariocriado".ToString()], " - alterado"),gerenciarPageObjects.TxtFldEditarNomeUsuario);
+            String nome = String.Concat("Usuario Teste ", Uteis.Uteis.geraNomeRandom());
+            acessarGerenciarUsuariosPage();
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarConta);
+            Uteis.Uteis.preencherTxtField(nome, gerenciarPageObjects.TxtFldNomeUsuario);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarUsuario);
+            Thread.Sleep(5000);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnUsuarios);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.LnkUsuarioCriado(nome));
+            Uteis.Uteis.preencherTxtField(String.Concat(nome, " - alterado"), gerenciarPageObjects.TxtFldEditarNomeUsuario);
             Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnAtualizarUsuario);
             Assert.AreEqual("Operação realizada com sucesso.", gerenciarPageObjects.MsgSucesso.Text);
         }
@@ -183,8 +288,14 @@ namespace AutomacaoMantisBase2.Testes
         public void deletarUsuario()
         {
             PageObjects.GerenciarPageObjects gerenciarPageObjects = new PageObjects.GerenciarPageObjects(driver);
-            criarNovoUsuario();
-            Uteis.Uteis.clicarBtn(gerenciarPageObjects.LnkUsuarioCriado);
+            String nome = String.Concat("Usuario Teste ", Uteis.Uteis.geraNomeRandom());
+            acessarGerenciarUsuariosPage();
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarConta);
+            Uteis.Uteis.preencherTxtField(nome, gerenciarPageObjects.TxtFldNomeUsuario);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnCriarUsuario);
+            Thread.Sleep(5000);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnUsuarios);
+            Uteis.Uteis.clicarBtn(gerenciarPageObjects.LnkUsuarioCriado(nome));
             Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnApagarUsuario);
             Uteis.Uteis.clicarBtn(gerenciarPageObjects.BtnApagarConta);
             Assert.AreEqual("Operação realizada com sucesso.", gerenciarPageObjects.MsgSucesso.Text);

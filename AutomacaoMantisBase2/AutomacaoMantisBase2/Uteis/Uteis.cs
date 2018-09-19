@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 
@@ -63,6 +64,15 @@ namespace AutomacaoMantisBase2.Uteis
         {
             esperaElemento(element);
             element.Click();
+        }
+
+        private static Random random = new Random();
+        public static String geraNomeRandom()
+        {
+            int length = 10;
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }

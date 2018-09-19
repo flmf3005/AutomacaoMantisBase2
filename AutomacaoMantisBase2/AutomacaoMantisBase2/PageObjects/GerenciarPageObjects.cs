@@ -54,8 +54,29 @@ namespace AutomacaoMantisBase2.PageObjects
         public IWebElement TxtFldNomeUsuario => driver.FindElement(By.Id("user-username"));
         public IWebElement TxtFldEditarNomeUsuario => driver.FindElement(By.Id("edit-username"));
         public IWebElement LnkProjetoCriado => driver.FindElement(By.XPath(String.Concat("(//a[contains(text(),'", ConfigurationManager.AppSettings["projetocriado".ToString()], "')])[2]")));
-        public IWebElement LnkUsuarioCriado => driver.FindElement(By.LinkText(ConfigurationManager.AppSettings["usuariocriado".ToString()]));
         public IWebElement MsgSucesso => driver.FindElement(By.CssSelector("p.bold.bigger-110"));
+        public IWebElement MsgErro => driver.FindElement(By.XPath("//div[@id='main-container']/div[@class='main-content']/div[@class='page-content']//div[@class='alert alert-danger']"));
+        public IWebElement TxtFldMarcador => driver.FindElement(By.Id("tag-name"));
+        public IWebElement BtnCriarMarcador => driver.FindElement(By.Name("config_set"));
+        public IWebElement TxtFldNomeCampo => driver.FindElement(By.Name("name"));
+        public IWebElement BtnNovoCampo => driver.FindElement(By.XPath("//input[@value='Novo Campo Personalizado']"));
+        public IWebElement BtnApagarCampoPers => driver.FindElement(By.XPath("//input[@value='Apagar Campo Personalizado']"));
+        public IWebElement BtnConfirmaApagarCampo => driver.FindElement(By.XPath("//input[@value='Apagar Campo']"));
+
+
+        public IWebElement LnkUsuarioCriado(string nomUsuario)
+        {
+            return driver.FindElement(By.LinkText(nomUsuario));
+        }
+
+        public IWebElement LnkMarcadorCriado(string nomMarcador)
+        {
+            return driver.FindElement(By.LinkText(nomMarcador));
+        }
+        public IWebElement LnkCampoCriado(string nomCampo)
+        {
+            return driver.FindElement(By.LinkText(nomCampo));
+        }
 
         public bool VerificaProjeto(string nomProjeto)
         {
