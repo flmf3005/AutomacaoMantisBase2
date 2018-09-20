@@ -43,6 +43,7 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Drivers\DriverFactory.cs" />
     <Compile Include="Drivers\WebDriver.cs" />
     <Compile Include="PageObjects\GerenciarPageObjects.cs" />
     <Compile Include="PageObjects\ResumoPageObjects.cs" />
@@ -101,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Arquivos\" />
+    <Folder Include="SeleniumGrid\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,7 @@
 ﻿using AutomacaoMantisBase2.Drivers;
 using AutomacaoMantisBase2.PageObjects;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,39 @@ namespace AutomacaoMantisBase2.Testes
             homeTest.acessarVerTarefasPage();
             verTarefasPageObjects.deletarTudo();
             Assert.AreEqual(0, verTarefasPageObjects.totalBugs());
+        }
+
+        [Test]
+        public void buscarTarefaPorID()
+        {
+            HomeTestes homeTest = new HomeTestes();
+            VerTarefasPageObjects verTarefasPageObjects = new VerTarefasPageObjects(driver);
+            CriarTarefasPageObjects criarTarefaPageObjects = new CriarTarefasPageObjects(driver);
+            String resumo = String.Concat("Resumo Teste ", Uteis.Uteis.geraNomeRandom());
+            String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.geraNomeRandom());
+            homeTest.acessarCriarTarefasPage();
+            Uteis.Uteis.preencherTxtField(resumo, criarTarefaPageObjects.FldResumo);
+            Uteis.Uteis.preencherTxtField(descricao, criarTarefaPageObjects.FldDescricao);
+            Uteis.Uteis.clicarBtn(criarTarefaPageObjects.BtnCriarTarefa);
+            Uteis.Uteis.esperaElemento(criarTarefaPageObjects.BtnTarefaCriada);
+            string idtarefa = criarTarefaPageObjects.idTarefaCriada(criarTarefaPageObjects.BtnTarefaCriada);
+            Thread.Sleep(5000);
+            Uteis.Uteis.preencherTxtField(idtarefa, verTarefasPageObjects.TxtFldBugID);
+            verTarefasPageObjects.TxtFldBugID.SendKeys(Keys.Enter);
+            Assert.AreEqual(driver.Url.ToString(), String.Concat("http://mantis.fernando.base2.com.br/view.php?id=",idtarefa));
+        }
+
+        [Test]
+        public void buscarTarefaPorIDInexistente()
+        {
+            HomeTestes homeTest = new HomeTestes();
+            VerTarefasPageObjects verTarefasPageObjects = new VerTarefasPageObjects(driver);
+            CriarTarefasPageObjects criarTarefaPageObjects = new CriarTarefasPageObjects(driver);
+            String idtarefa = "99999999";
+            homeTest.acessarVerTarefasPage();
+            Uteis.Uteis.preencherTxtField(idtarefa, verTarefasPageObjects.TxtFldBugID);
+            verTarefasPageObjects.TxtFldBugID.SendKeys(Keys.Enter);
+            Assert.AreEqual(true,verTarefasPageObjects.MsgErro.Displayed);
         }
 
         [Test]

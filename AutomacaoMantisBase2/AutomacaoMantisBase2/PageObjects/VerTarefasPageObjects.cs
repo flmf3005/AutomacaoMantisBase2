@@ -27,6 +27,8 @@ namespace AutomacaoMantisBase2.PageObjects
         public IWebElement PrioridadeTarefaFiltro => driver.FindElement(By.XPath("//table[@id='buglist']/tbody/tr/td[3]/i"));
         public IWebElement PrioridadeAlta => driver.FindElement(By.CssSelector("i.fa.fa-chevron-up.fa-lg.red"));
         public IWebElement BtnAtualizarPrioridade => driver.FindElement(By.XPath("//input[@value='Atualizar Prioridade']"));
+        public IWebElement TxtFldBugID => driver.FindElement(By.Name("bug_id"));
+        public IWebElement MsgErro => driver.FindElement(By.CssSelector("div.alert.alert-danger"));
 
         public int totalBugs()
         {
