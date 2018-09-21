@@ -43,7 +43,6 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Drivers\DriverFactory.cs" />
     <Compile Include="Drivers\WebDriver.cs" />
     <Compile Include="PageObjects\GerenciarPageObjects.cs" />
     <Compile Include="PageObjects\ResumoPageObjects.cs" />

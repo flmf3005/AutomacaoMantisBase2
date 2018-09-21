@@ -78,11 +78,6 @@ namespace AutomacaoMantisBase2.PageObjects
             return driver.FindElement(By.LinkText(nomCampo));
         }
 
-        public IWebElement LnkUsuarioCriado(string nomUsuario)
-        {
-            return driver.FindElement(By.LinkText(nomUsuario));
-        }
-
         public bool VerificaProjeto(string nomProjeto)
         {
             string xpath = String.Concat("(//a[contains(text(),'", nomProjeto, "')])[2]");
