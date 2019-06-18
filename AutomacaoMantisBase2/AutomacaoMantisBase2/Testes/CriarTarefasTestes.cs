@@ -115,4 +115,5 @@ namespace AutomacaoMantisBase2.Testes
                 return testCases;
             }
         }
+    }
 }
