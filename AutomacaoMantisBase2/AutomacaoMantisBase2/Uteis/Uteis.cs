@@ -13,38 +13,22 @@ namespace AutomacaoMantisBase2.Uteis
     {
         public static String getPathSeleniumDriver()
         {
-            // Função para definir o path do diretório
-            String strAppDir = Path.GetDirectoryName(
-            Assembly.GetExecutingAssembly().GetName().CodeBase).Substring(6);
-            //String strAppFolderData = Path.Combine(strAppDir, "\\SeleniumComum\\Drivers");
+            String strAppDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase).Substring(6);
 
-            //Função para reduzir em duas camadas a arvore do path
             var gparent = Directory.GetParent(Directory.GetParent(strAppDir).ToString());
 
-            //Conversão var -> String
-            String aux = gparent.ToString();
-
-            //Concatenar Path diretorio + Path Drivers
-            String strAppFolderData = String.Concat(aux, "\\Drivers");
+            String strAppFolderData = gparent + "\\Drivers";
             return strAppFolderData; //+ strAppFolderData;
         }
 
         public static String getPastaArquivos()
         {
-            // Função para definir o path do diretório
-            String strAppDir = Path.GetDirectoryName(
-            Assembly.GetExecutingAssembly().GetName().CodeBase).Substring(6);
-            //String strAppFolderData = Path.Combine(strAppDir, "\\SeleniumComum\\Drivers");
+            String strAppDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase).Substring(6);
 
-            //Função para reduzir em duas camadas a arvore do path
             var gparent = Directory.GetParent(Directory.GetParent(strAppDir).ToString());
 
-            //Conversão var -> String
-            String aux = gparent.ToString();
-
-            //Concatenar Path diretorio + Path Drivers
-            String strAppFolderData = String.Concat(aux, "\\Arquivos");
-            return strAppFolderData; //+ strAppFolderData;
+            String strAppFolderData = gparent + "\\Arquivos";
+            return strAppFolderData;
         }
 
         public static void esperaElemento(IWebElement element)
