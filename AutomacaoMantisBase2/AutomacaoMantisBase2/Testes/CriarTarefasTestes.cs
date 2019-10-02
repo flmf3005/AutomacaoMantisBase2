@@ -88,7 +88,7 @@ namespace AutomacaoMantisBase2.Testes
             {
                 var testCases = new List<TestCaseData>();
                 string[] split = { "" };
-                using (var fs = File.OpenRead(String.Concat(Uteis.Uteis.getPastaArquivos(), "\\Tarefas.xlsx")))
+                using (var fs = File.OpenRead(String.Concat(Uteis.Uteis.getPastaArquivos(), "\\Tarefas.csv")))
                 using (var sr = new StreamReader(fs))
                 {
                     string line = string.Empty;
@@ -98,7 +98,7 @@ namespace AutomacaoMantisBase2.Testes
                         line = sr.ReadLine();
                         if (line != null)
                         {
-                            split = line.Split(new char[] { ',' }, StringSplitOptions.None);
+                            split = line.Split(new char[] { ';' }, StringSplitOptions.None);
                             string resumo = split[0].Trim();
                             string descricao = split[1].Trim();
 
@@ -107,8 +107,6 @@ namespace AutomacaoMantisBase2.Testes
                                 var testCase = new TestCaseData(resumo, descricao);
                                 testCases.Add(testCase);
                             }
-
-
                         }
                     }
                 }
