@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using AutomacaoMantisBase2.PageObjects;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,25 +10,23 @@ namespace AutomacaoMantisBase2.Testes
 {
     public class LoginTestes : Drivers.WebDriver
     {
+        LoginPageObjects loginPage = new LoginPageObjects(driver);
 
         [Test]
         public void acessarLoginPage()
         {
-            PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
             loginPage.verificaLoginPage();
         }
 
         [Test]
         public void inserirUsername()
         {
-            PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
             loginPage.inserirUsername();
         }
 
         [Test]
         public void loginSucesso()
         {
-            PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
             loginPage.inserirUsername();
             loginPage.inserirSenha();
         }
@@ -35,7 +34,6 @@ namespace AutomacaoMantisBase2.Testes
         [Test]
         public void logoffSucesso()
         {
-            PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
             loginSucesso();
             Uteis.Uteis.Click(loginPage.BtnUserInfo);
             Uteis.Uteis.Click(loginPage.LnkSair);
@@ -45,7 +43,6 @@ namespace AutomacaoMantisBase2.Testes
         [Test]
         public void loginFalha()
         {
-            PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
             loginPage.inserirUsername();
             loginPage.inserirSenhaIncorreta();
         }
@@ -53,14 +50,12 @@ namespace AutomacaoMantisBase2.Testes
         [Test]
         public void loginVazio()
         {
-            PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
             loginPage.inserirUsernameVazio();
         }
 
         [Test]
         public void acessarCriarConta()
         {
-            PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
             loginPage.clicarBtnCriarConta();
         }
     }

@@ -5,6 +5,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -14,12 +15,13 @@ namespace AutomacaoMantisBase2.Testes
 {
     public class VerTarefasTestes : WebDriver
     {
+        HomeTestes homeTest = new HomeTestes();
+        VerTarefasPageObjects verTarefasPageObjects = new VerTarefasPageObjects(driver);
+        CriarTarefasPageObjects criarTarefaPageObjects = new CriarTarefasPageObjects(driver);
 
         [Test]
         public void deletarTarefasTotal()
         {
-            HomeTestes homeTest = new HomeTestes();
-            VerTarefasPageObjects verTarefasPageObjects = new VerTarefasPageObjects(driver);
             homeTest.acessarVerTarefasPage();
             verTarefasPageObjects.deletarTudo();
             Assert.AreEqual(0, verTarefasPageObjects.totalBugs());
@@ -28,9 +30,6 @@ namespace AutomacaoMantisBase2.Testes
         [Test]
         public void buscarTarefaPorID()
         {
-            HomeTestes homeTest = new HomeTestes();
-            VerTarefasPageObjects verTarefasPageObjects = new VerTarefasPageObjects(driver);
-            CriarTarefasPageObjects criarTarefaPageObjects = new CriarTarefasPageObjects(driver);
             String resumo = String.Concat("Resumo Teste ", Uteis.Uteis.GeraStringRandom());
             String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.GeraStringRandom());
             homeTest.acessarCriarTarefasPage();
@@ -42,15 +41,12 @@ namespace AutomacaoMantisBase2.Testes
             Thread.Sleep(5000);
             Uteis.Uteis.SendKeys(idtarefa, verTarefasPageObjects.TxtFldBugID);
             verTarefasPageObjects.TxtFldBugID.SendKeys(Keys.Enter);
-            Assert.AreEqual(driver.Url.ToString(), String.Concat("http://mantis.fernando.base2.com.br/view.php?id=",idtarefa));
+            Assert.AreEqual(driver.Url.ToString(), ConfigurationManager.AppSettings["URL"].ToString() + "/view.php?id=" + idtarefa);
         }
 
         [Test]
         public void buscarTarefaPorIDInexistente()
         {
-            HomeTestes homeTest = new HomeTestes();
-            VerTarefasPageObjects verTarefasPageObjects = new VerTarefasPageObjects(driver);
-            CriarTarefasPageObjects criarTarefaPageObjects = new CriarTarefasPageObjects(driver);
             String idtarefa = "99999999";
             homeTest.acessarVerTarefasPage();
             Uteis.Uteis.SendKeys(idtarefa, verTarefasPageObjects.TxtFldBugID);
@@ -61,9 +57,6 @@ namespace AutomacaoMantisBase2.Testes
         [Test]
         public void deletarTarefaUnica()
         {
-            HomeTestes homeTest = new HomeTestes();
-            CriarTarefasPageObjects criarTarefaPageObjects = new CriarTarefasPageObjects(driver);
-            VerTarefasPageObjects verTarefasPageObjects = new VerTarefasPageObjects(driver);
             String resumo = String.Concat("Resumo Teste ", Uteis.Uteis.GeraStringRandom());
             String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.GeraStringRandom());
             homeTest.acessarCriarTarefasPage();
@@ -81,9 +74,6 @@ namespace AutomacaoMantisBase2.Testes
         [Test]
         public void alterarPrioridadeTarefa()
         {
-            HomeTestes homeTest = new HomeTestes();
-            CriarTarefasPageObjects criarTarefaPageObjects = new CriarTarefasPageObjects(driver);
-            VerTarefasPageObjects verTarefasPageObjects = new VerTarefasPageObjects(driver);
             String resumo = String.Concat("Resumo Teste ", Uteis.Uteis.GeraStringRandom());
             String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.GeraStringRandom());
             homeTest.acessarCriarTarefasPage();

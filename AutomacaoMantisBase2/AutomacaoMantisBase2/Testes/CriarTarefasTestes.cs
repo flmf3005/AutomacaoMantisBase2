@@ -16,12 +16,12 @@ namespace AutomacaoMantisBase2.Testes
 {
     public class CriarTarefasTestes : Drivers.WebDriver
     {
+        HomeTestes homeTest = new HomeTestes();
+        CriarTarefasPageObjects criarTarefaPageObjects = new CriarTarefasPageObjects(driver);
 
         [Test]
         public void criarNovaTarefaUnica()
-        {
-            HomeTestes homeTest = new HomeTestes();
-            CriarTarefasPageObjects criarTarefaPageObjects = new CriarTarefasPageObjects(driver);
+        {            
             String resumo = String.Concat("Resumo Teste ", Uteis.Uteis.GeraStringRandom());
             String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.GeraStringRandom());
             homeTest.acessarCriarTarefasPage();
@@ -37,8 +37,6 @@ namespace AutomacaoMantisBase2.Testes
         [Test]
         public void criarNovaTarefaDupla()
         {
-            HomeTestes homeTest = new HomeTestes();
-            PageObjects.CriarTarefasPageObjects criarTarefaPageObjects = new PageObjects.CriarTarefasPageObjects(driver);
             homeTest.acessarCriarTarefasPage();
             String resumo = String.Concat("Resumo Teste ", Uteis.Uteis.GeraStringRandom());
             String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.GeraStringRandom());
@@ -69,10 +67,7 @@ namespace AutomacaoMantisBase2.Testes
         public void criarTarefasDDT(string resumo, string descricao)
 
         {
-            HomeTestes homeTest = new HomeTestes();
-            PageObjects.CriarTarefasPageObjects criarTarefaPageObjects = new PageObjects.CriarTarefasPageObjects(driver);
-
-            Uteis.Uteis.Click(criarTarefaPageObjects.LnkCriarTarefa);
+            homeTest.acessarCriarTarefasPage();
             Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo);
             Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao);
             Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa);
