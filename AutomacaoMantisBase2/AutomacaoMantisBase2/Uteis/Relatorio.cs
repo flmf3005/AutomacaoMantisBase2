@@ -18,14 +18,14 @@ namespace AutomacaoMantisBase2.Uteis
         public static ExtentReports EXTENT_REPORT = null;
         public static ExtentTest TEST;
         static string reportPathName = ConfigurationManager.AppSettings["nomeDesafio".ToString()] + "_" + DateTime.Today.ToString("dd-MM-yyyy");
+        static string reportName = ConfigurationManager.AppSettings["nomeDesafio".ToString()] + "_" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm");
         static string projectBinDebugPath = AppDomain.CurrentDomain.BaseDirectory;
         static FileInfo fileInfo = new FileInfo(projectBinDebugPath);
         static DirectoryInfo projectFolder = fileInfo.Directory;
         static string projectFolderPath = projectFolder.FullName;
         static string reportRootPath = projectFolderPath + "/Reports/";
-        static DirectoryInfo reportFolder = new DirectoryInfo(reportRootPath);
         static string reportPath = projectFolderPath + "/Reports/" + reportPathName + "/";
-        static string fileName = reportPathName + ".html";
+        static string fileName = reportName + ".html";
         static string fullReportFilePath = reportPath + fileName;
 
         public static void CreateReport()
