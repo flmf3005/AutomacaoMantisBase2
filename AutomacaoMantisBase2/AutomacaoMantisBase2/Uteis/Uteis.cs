@@ -34,12 +34,13 @@ namespace AutomacaoMantisBase2.Uteis
         public static void WaitForElement(IWebElement element)
         {
             WebDriverWait espera = new WebDriverWait(WebDriver.driver, timeout: TimeSpan.FromSeconds(30));
-            espera.Until(condition: SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(element));
+            espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(element));
         }
 
         public static void SendKeys(String value, IWebElement element, String nomeElemento)
         {
             WaitForElement(element);
+            ScrollToElementJavaScript(element);
             element.Clear();
             element.SendKeys(value);
             Relatorio.AddTestInfo("SendKeys || " + nomeElemento + "- Valor: " + value);
@@ -48,8 +49,15 @@ namespace AutomacaoMantisBase2.Uteis
         public static void Click(IWebElement element, String nomeElemento)
         {
             WaitForElement(element);
+            ScrollToElementJavaScript(element);
             element.Click();
             Relatorio.AddTestInfo("Click || " + nomeElemento);
+        }
+
+        public static void ScrollToElementJavaScript(IWebElement element)
+        {
+            IJavaScriptExecutor javaScript = (IJavaScriptExecutor)WebDriver.driver;
+            javaScript.ExecuteScript("arguments[0].scrollIntoView(true);", element);
         }
 
         public static String GeraStringRandom()
