@@ -18,8 +18,8 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             homePageObjects.clicarBtnListaProjetos();
             homePageObjects.selecionarProjetoPadrao();
-            Uteis.Uteis.clicarBtn(homePageObjects.MenuMyView);
-            Uteis.Uteis.esperaElemento(myViewPageObjects.LnkAtrbuidosAMim);
+            Uteis.Uteis.Click(homePageObjects.MenuMyView);
+            Uteis.Uteis.WaitForElement(myViewPageObjects.LnkAtrbuidosAMim);
             Assert.AreEqual("Atribuídos a Mim (não resolvidos)", myViewPageObjects.LnkAtrbuidosAMim.Text);
         }
 
@@ -32,8 +32,8 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             homePageObjects.clicarBtnListaProjetos();
             homePageObjects.selecionarProjetoPadrao();
-            Uteis.Uteis.clicarBtn(homePageObjects.MenuVerTarefas);
-            Uteis.Uteis.esperaElemento(verTarefasPageObjects.DivFiltros);
+            Uteis.Uteis.Click(homePageObjects.MenuVerTarefas);
+            Uteis.Uteis.WaitForElement(verTarefasPageObjects.DivFiltros);
             Assert.AreEqual("Filtros", verTarefasPageObjects.DivFiltros.Text);
         }
 
@@ -46,8 +46,8 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             homePageObjects.clicarBtnListaProjetos();
             homePageObjects.selecionarProjetoPadrao();
-            Uteis.Uteis.clicarBtn(homePageObjects.MenuCriarTarefas);
-            Uteis.Uteis.esperaElemento(criarTarefasPageObjects.FormTitInsercao);
+            Uteis.Uteis.Click(homePageObjects.MenuCriarTarefas);
+            Uteis.Uteis.WaitForElement(criarTarefasPageObjects.FormTitInsercao);
             Assert.AreEqual("Digite os Detalhes do Relatório", criarTarefasPageObjects.FormTitInsercao.Text);
         }
 
@@ -60,8 +60,8 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             homePageObjects.clicarBtnListaProjetos();
             homePageObjects.selecionarProjetoPadrao();
-            Uteis.Uteis.clicarBtn(homePageObjects.MenuRegistroMudancas);
-            Uteis.Uteis.esperaElemento(regMudancaPageObjects.MsgNenhumRegistro);
+            Uteis.Uteis.Click(homePageObjects.MenuRegistroMudancas);
+            Uteis.Uteis.WaitForElement(regMudancaPageObjects.MsgNenhumRegistro);
             Assert.AreEqual("Nenhum registro de mudança disponível. Apenas tarefas que indiquem a versão na qual foi resolvida aparecerão nos registros de mudança.", regMudancaPageObjects.MsgNenhumRegistro.Text);
         }
 
@@ -74,8 +74,8 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             homePageObjects.clicarBtnListaProjetos();
             homePageObjects.selecionarProjetoPadrao();
-            Uteis.Uteis.clicarBtn(homePageObjects.MenuPlanejamento);
-            Uteis.Uteis.esperaElemento(planejamentoPageObjects.MsgNenhumPlanejamento);
+            Uteis.Uteis.Click(homePageObjects.MenuPlanejamento);
+            Uteis.Uteis.WaitForElement(planejamentoPageObjects.MsgNenhumPlanejamento);
             Assert.AreEqual("Nenhum planejamento disponível. Apenas tarefas com a versão indicada aparecerão no planejamento.", planejamentoPageObjects.MsgNenhumPlanejamento.Text);
         }
 
@@ -88,8 +88,8 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             homePageObjects.clicarBtnListaProjetos();
             homePageObjects.selecionarProjetoPadrao();
-            Uteis.Uteis.clicarBtn(homePageObjects.MenuResumo);
-            Uteis.Uteis.esperaElemento(resumoPageObjects.DivResumo);
+            Uteis.Uteis.Click(homePageObjects.MenuResumo);
+            Uteis.Uteis.WaitForElement(resumoPageObjects.DivResumo);
             Assert.AreEqual("Resumo", resumoPageObjects.DivResumo.Text);
         }
         [Test]
@@ -100,8 +100,8 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             homePageObjects.clicarBtnListaProjetos();
             homePageObjects.selecionarProjetoPadrao();
-            Uteis.Uteis.clicarBtn(homePageObjects.MenuGerenciar);
-            Uteis.Uteis.esperaElemento(homePageObjects.TitInformacao);
+            Uteis.Uteis.Click(homePageObjects.MenuGerenciar);
+            Uteis.Uteis.WaitForElement(homePageObjects.TitInformacao);
             Assert.AreEqual("Informação do Site", homePageObjects.TitInformacao.Text);
         }
 
@@ -112,8 +112,8 @@ namespace AutomacaoMantisBase2.Testes
             PageObjects.HomePageObjects homePageObjects = new PageObjects.HomePageObjects(driver);
             PageObjects.MyViewPageObjects myViewPageObjects = new PageObjects.MyViewPageObjects(driver);
             loginTest.loginSucesso();
-            Uteis.Uteis.clicarBtn(homePageObjects.BtnUserInfo);
-            Uteis.Uteis.clicarBtn(homePageObjects.LnkMinhaConta);
+            Uteis.Uteis.Click(homePageObjects.BtnUserInfo);
+            Uteis.Uteis.Click(homePageObjects.LnkMinhaConta);
             Assert.AreEqual("Alterar Conta", homePageObjects.TitInformacao.Text);
         }
 
@@ -124,9 +124,9 @@ namespace AutomacaoMantisBase2.Testes
             PageObjects.HomePageObjects homePageObjects = new PageObjects.HomePageObjects(driver);
             PageObjects.MyViewPageObjects myViewPageObjects = new PageObjects.MyViewPageObjects(driver);
             loginTest.loginSucesso();
-            Uteis.Uteis.clicarBtn(homePageObjects.BtnUserInfo);
-            Uteis.Uteis.clicarBtn(homePageObjects.LnkMinhaConta);
-            Uteis.Uteis.clicarBtn(homePageObjects.LnkPreferencias);
+            Uteis.Uteis.Click(homePageObjects.BtnUserInfo);
+            Uteis.Uteis.Click(homePageObjects.LnkMinhaConta);
+            Uteis.Uteis.Click(homePageObjects.LnkPreferencias);
             Assert.AreEqual("Preferências da Conta", homePageObjects.TitInformacao.Text);
         }
 
@@ -137,9 +137,9 @@ namespace AutomacaoMantisBase2.Testes
             PageObjects.HomePageObjects homePageObjects = new PageObjects.HomePageObjects(driver);
             PageObjects.MyViewPageObjects myViewPageObjects = new PageObjects.MyViewPageObjects(driver);
             loginTest.loginSucesso();
-            Uteis.Uteis.clicarBtn(homePageObjects.BtnUserInfo);
-            Uteis.Uteis.clicarBtn(homePageObjects.LnkMinhaConta);
-            Uteis.Uteis.clicarBtn(homePageObjects.LnkGerenciarColunas);
+            Uteis.Uteis.Click(homePageObjects.BtnUserInfo);
+            Uteis.Uteis.Click(homePageObjects.LnkMinhaConta);
+            Uteis.Uteis.Click(homePageObjects.LnkGerenciarColunas);
             Assert.AreEqual("Gerenciar Colunas", homePageObjects.TitInformacao.Text);
         }
 
@@ -150,9 +150,9 @@ namespace AutomacaoMantisBase2.Testes
             PageObjects.HomePageObjects homePageObjects = new PageObjects.HomePageObjects(driver);
             PageObjects.MyViewPageObjects myViewPageObjects = new PageObjects.MyViewPageObjects(driver);
             loginTest.loginSucesso();
-            Uteis.Uteis.clicarBtn(homePageObjects.BtnUserInfo);
-            Uteis.Uteis.clicarBtn(homePageObjects.LnkMinhaConta);
-            Uteis.Uteis.clicarBtn(homePageObjects.LnkPerfis);
+            Uteis.Uteis.Click(homePageObjects.BtnUserInfo);
+            Uteis.Uteis.Click(homePageObjects.LnkMinhaConta);
+            Uteis.Uteis.Click(homePageObjects.LnkPerfis);
             Assert.AreEqual("Adicionar Perfil", homePageObjects.TitInformacao.Text);
         }
 
@@ -163,9 +163,9 @@ namespace AutomacaoMantisBase2.Testes
             PageObjects.HomePageObjects homePageObjects = new PageObjects.HomePageObjects(driver);
             PageObjects.MyViewPageObjects myViewPageObjects = new PageObjects.MyViewPageObjects(driver);
             loginTest.loginSucesso();
-            Uteis.Uteis.clicarBtn(homePageObjects.BtnUserInfo);
-            Uteis.Uteis.clicarBtn(homePageObjects.LnkMinhaConta);
-            Uteis.Uteis.clicarBtn(homePageObjects.LnkTokensAPI);
+            Uteis.Uteis.Click(homePageObjects.BtnUserInfo);
+            Uteis.Uteis.Click(homePageObjects.LnkMinhaConta);
+            Uteis.Uteis.Click(homePageObjects.LnkTokensAPI);
             Assert.AreEqual("Criar token API", homePageObjects.TitInformacao.Text);
         }
     }

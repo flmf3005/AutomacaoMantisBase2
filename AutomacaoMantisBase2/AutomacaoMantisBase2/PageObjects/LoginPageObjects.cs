@@ -23,44 +23,44 @@ namespace AutomacaoMantisBase2.PageObjects
         public IWebElement LnkSair => driver.FindElement(By.LinkText("Sair"));
         public void verificaLoginPage()
         {
-            Uteis.Uteis.esperaElemento(element: FldEntrar);
+            Uteis.Uteis.WaitForElement(element: FldEntrar);
             Assert.AreEqual("Entrar", FldEntrar.Text);
         }
 
         public void inserirUsername()
         {
-            Uteis.Uteis.esperaElemento(TxtUserName);
-            Uteis.Uteis.preencherTxtField(ConfigurationManager.AppSettings["username".ToString()], TxtUserName);
-            Uteis.Uteis.clicarBtn(BtnEntrar);
+            Uteis.Uteis.WaitForElement(TxtUserName);
+            Uteis.Uteis.SendKeys(ConfigurationManager.AppSettings["username".ToString()], TxtUserName);
+            Uteis.Uteis.Click(BtnEntrar);
             Assert.AreEqual("Perdeu a sua senha?", LnkPerdeuSenha.Text);
         }
 
         public void inserirUsernameVazio()
         {
-            Uteis.Uteis.esperaElemento(TxtUserName);
-            Uteis.Uteis.clicarBtn(BtnEntrar);
+            Uteis.Uteis.WaitForElement(TxtUserName);
+            Uteis.Uteis.Click(BtnEntrar);
             Assert.AreEqual("Sua conta pode estar desativada ou bloqueada ou o nome de usuário e a senha que você digitou não estão corretos.", driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='AVISO:'])[1]/preceding::p[1]")).Text);
         }
         public void inserirSenha()
         {
-            Uteis.Uteis.esperaElemento(TxtSenha);
-            Uteis.Uteis.preencherTxtField(ConfigurationManager.AppSettings["password".ToString()], TxtSenha);
-            Uteis.Uteis.clicarBtn(BtnEntrar);
+            Uteis.Uteis.WaitForElement(TxtSenha);
+            Uteis.Uteis.SendKeys(ConfigurationManager.AppSettings["password".ToString()], TxtSenha);
+            Uteis.Uteis.Click(BtnEntrar);
             Assert.AreEqual(ConfigurationManager.AppSettings["username".ToString()], BtnUserInfo.Text);
         }
 
         public void inserirSenhaIncorreta()
         {
-            Uteis.Uteis.esperaElemento(TxtSenha);
-            Uteis.Uteis.preencherTxtField("senha", TxtSenha);
-            Uteis.Uteis.clicarBtn(BtnEntrar);
+            Uteis.Uteis.WaitForElement(TxtSenha);
+            Uteis.Uteis.SendKeys("senha", TxtSenha);
+            Uteis.Uteis.Click(BtnEntrar);
             Assert.AreEqual("Sua conta pode estar desativada ou bloqueada ou o nome de usuário e a senha que você digitou não estão corretos.", driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='AVISO:'])[1]/preceding::p[1]")).Text);
         }
 
         public void clicarBtnCriarConta()
         {
-            Uteis.Uteis.esperaElemento(LnkCriarNovaConta);
-            Uteis.Uteis.clicarBtn(LnkCriarNovaConta);
+            Uteis.Uteis.WaitForElement(LnkCriarNovaConta);
+            Uteis.Uteis.Click(LnkCriarNovaConta);
             Assert.AreEqual("username", TxtUserName.GetAttribute("id"));
         }
     }

@@ -59,6 +59,7 @@
     <Compile Include="Testes\LoginTestes.cs" />
     <Compile Include="Testes\HomeTestes.cs" />
     <Compile Include="Testes\VerTarefasTestes.cs" />
+    <Compile Include="Uteis\Relatorio.cs" />
     <Compile Include="Uteis\Uteis.cs" />
   </ItemGroup>
   <ItemGroup>

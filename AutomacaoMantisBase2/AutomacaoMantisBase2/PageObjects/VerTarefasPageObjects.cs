@@ -46,31 +46,31 @@ namespace AutomacaoMantisBase2.PageObjects
         }
         public void deletarTudo()
         {
-            Uteis.Uteis.esperaElemento(LblBugs);
+            Uteis.Uteis.WaitForElement(LblBugs);
             int qntBugs = totalBugs();
             while (qntBugs > 0)
             {
-                Uteis.Uteis.clicarBtn(ChBoxSelTudo);
-                Uteis.Uteis.clicarBtn(ComboBoxAcoes);
+                Uteis.Uteis.Click(ChBoxSelTudo);
+                Uteis.Uteis.Click(ComboBoxAcoes);
                 var selectElement = new SelectElement(ComboBoxAcoes);
                 selectElement.SelectByText("Apagar");
-                Uteis.Uteis.clicarBtn(BtnOk);
-                Uteis.Uteis.clicarBtn(BtnApagarTarefas);
+                Uteis.Uteis.Click(BtnOk);
+                Uteis.Uteis.Click(BtnApagarTarefas);
                 qntBugs = totalBugs();
             }
         }
 
         public void alterarPrioridade()
         {
-            Uteis.Uteis.clicarBtn(ChBoxSelTudo);
-            Uteis.Uteis.clicarBtn(ComboBoxAcoes);
+            Uteis.Uteis.Click(ChBoxSelTudo);
+            Uteis.Uteis.Click(ComboBoxAcoes);
             var selectElement = new SelectElement(ComboBoxAcoes);
             selectElement.SelectByText("Atualizar Prioridade");
-            Uteis.Uteis.clicarBtn(BtnOk);
-            Uteis.Uteis.clicarBtn(ComboBoxPrioridade);
+            Uteis.Uteis.Click(BtnOk);
+            Uteis.Uteis.Click(ComboBoxPrioridade);
             selectElement = new SelectElement(ComboBoxPrioridade);
             selectElement.SelectByText("alta");
-            Uteis.Uteis.clicarBtn(BtnAtualizarPrioridade);
+            Uteis.Uteis.Click(BtnAtualizarPrioridade);
         }
 
     }

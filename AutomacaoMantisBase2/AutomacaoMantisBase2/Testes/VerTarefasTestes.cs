@@ -31,16 +31,16 @@ namespace AutomacaoMantisBase2.Testes
             HomeTestes homeTest = new HomeTestes();
             VerTarefasPageObjects verTarefasPageObjects = new VerTarefasPageObjects(driver);
             CriarTarefasPageObjects criarTarefaPageObjects = new CriarTarefasPageObjects(driver);
-            String resumo = String.Concat("Resumo Teste ", Uteis.Uteis.geraNomeRandom());
-            String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.geraNomeRandom());
+            String resumo = String.Concat("Resumo Teste ", Uteis.Uteis.GeraStringRandom());
+            String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.GeraStringRandom());
             homeTest.acessarCriarTarefasPage();
-            Uteis.Uteis.preencherTxtField(resumo, criarTarefaPageObjects.FldResumo);
-            Uteis.Uteis.preencherTxtField(descricao, criarTarefaPageObjects.FldDescricao);
-            Uteis.Uteis.clicarBtn(criarTarefaPageObjects.BtnCriarTarefa);
-            Uteis.Uteis.esperaElemento(criarTarefaPageObjects.BtnTarefaCriada);
+            Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo);
+            Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao);
+            Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa);
+            Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
             string idtarefa = criarTarefaPageObjects.idTarefaCriada(criarTarefaPageObjects.BtnTarefaCriada);
             Thread.Sleep(5000);
-            Uteis.Uteis.preencherTxtField(idtarefa, verTarefasPageObjects.TxtFldBugID);
+            Uteis.Uteis.SendKeys(idtarefa, verTarefasPageObjects.TxtFldBugID);
             verTarefasPageObjects.TxtFldBugID.SendKeys(Keys.Enter);
             Assert.AreEqual(driver.Url.ToString(), String.Concat("http://mantis.fernando.base2.com.br/view.php?id=",idtarefa));
         }
@@ -53,7 +53,7 @@ namespace AutomacaoMantisBase2.Testes
             CriarTarefasPageObjects criarTarefaPageObjects = new CriarTarefasPageObjects(driver);
             String idtarefa = "99999999";
             homeTest.acessarVerTarefasPage();
-            Uteis.Uteis.preencherTxtField(idtarefa, verTarefasPageObjects.TxtFldBugID);
+            Uteis.Uteis.SendKeys(idtarefa, verTarefasPageObjects.TxtFldBugID);
             verTarefasPageObjects.TxtFldBugID.SendKeys(Keys.Enter);
             Assert.AreEqual(true,verTarefasPageObjects.MsgErro.Displayed);
         }
@@ -64,17 +64,17 @@ namespace AutomacaoMantisBase2.Testes
             HomeTestes homeTest = new HomeTestes();
             CriarTarefasPageObjects criarTarefaPageObjects = new CriarTarefasPageObjects(driver);
             VerTarefasPageObjects verTarefasPageObjects = new VerTarefasPageObjects(driver);
-            String resumo = String.Concat("Resumo Teste ", Uteis.Uteis.geraNomeRandom());
-            String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.geraNomeRandom());
+            String resumo = String.Concat("Resumo Teste ", Uteis.Uteis.GeraStringRandom());
+            String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.GeraStringRandom());
             homeTest.acessarCriarTarefasPage();
-            Uteis.Uteis.preencherTxtField(resumo, criarTarefaPageObjects.FldResumo);
-            Uteis.Uteis.preencherTxtField(descricao, criarTarefaPageObjects.FldDescricao);
-            Uteis.Uteis.clicarBtn(criarTarefaPageObjects.BtnCriarTarefa);
+            Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo);
+            Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao);
+            Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa);
             Thread.Sleep(5000);
-            Uteis.Uteis.preencherTxtField(resumo, verTarefasPageObjects.TxtBuscar);
-            Uteis.Uteis.clicarBtn(verTarefasPageObjects.BtnAplicarFiltro);
+            Uteis.Uteis.SendKeys(resumo, verTarefasPageObjects.TxtBuscar);
+            Uteis.Uteis.Click(verTarefasPageObjects.BtnAplicarFiltro);
             verTarefasPageObjects.deletarTudo();
-            Uteis.Uteis.clicarBtn(verTarefasPageObjects.BtnAplicarFiltro);
+            Uteis.Uteis.Click(verTarefasPageObjects.BtnAplicarFiltro);
             Assert.AreEqual(0, verTarefasPageObjects.totalBugs());
         }
 
@@ -84,17 +84,17 @@ namespace AutomacaoMantisBase2.Testes
             HomeTestes homeTest = new HomeTestes();
             CriarTarefasPageObjects criarTarefaPageObjects = new CriarTarefasPageObjects(driver);
             VerTarefasPageObjects verTarefasPageObjects = new VerTarefasPageObjects(driver);
-            String resumo = String.Concat("Resumo Teste ", Uteis.Uteis.geraNomeRandom());
-            String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.geraNomeRandom());
+            String resumo = String.Concat("Resumo Teste ", Uteis.Uteis.GeraStringRandom());
+            String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.GeraStringRandom());
             homeTest.acessarCriarTarefasPage();
-            Uteis.Uteis.preencherTxtField(resumo, criarTarefaPageObjects.FldResumo);
-            Uteis.Uteis.preencherTxtField(descricao, criarTarefaPageObjects.FldDescricao);
-            Uteis.Uteis.clicarBtn(criarTarefaPageObjects.BtnCriarTarefa);
+            Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo);
+            Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao);
+            Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa);
             Thread.Sleep(5000);
-            Uteis.Uteis.preencherTxtField(resumo, verTarefasPageObjects.TxtBuscar);
-            Uteis.Uteis.clicarBtn(verTarefasPageObjects.BtnAplicarFiltro);
+            Uteis.Uteis.SendKeys(resumo, verTarefasPageObjects.TxtBuscar);
+            Uteis.Uteis.Click(verTarefasPageObjects.BtnAplicarFiltro);
             verTarefasPageObjects.alterarPrioridade();
-            Uteis.Uteis.clicarBtn(verTarefasPageObjects.BtnAplicarFiltro);
+            Uteis.Uteis.Click(verTarefasPageObjects.BtnAplicarFiltro);
             Assert.AreEqual(verTarefasPageObjects.PrioridadeAlta, verTarefasPageObjects.PrioridadeTarefaFiltro);
         }
     }

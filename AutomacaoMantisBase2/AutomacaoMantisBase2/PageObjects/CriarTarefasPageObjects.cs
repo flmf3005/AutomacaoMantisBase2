@@ -32,7 +32,7 @@ namespace AutomacaoMantisBase2.PageObjects
         public bool VerificaLknTarefaCriada (string tarefa)
         {
             string xpath = String.Concat("//a[@href='/view.php?id=", tarefa, "']");
-            Uteis.Uteis.esperaElemento(driver.FindElement(By.XPath(xpath)));
+            Uteis.Uteis.WaitForElement(driver.FindElement(By.XPath(xpath)));
             return driver.FindElement(By.XPath(xpath)).Displayed;
         }
         

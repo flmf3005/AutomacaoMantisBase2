@@ -31,32 +31,38 @@ namespace AutomacaoMantisBase2.Uteis
             return strAppFolderData;
         }
 
-        public static void esperaElemento(IWebElement element)
+        public static void WaitForElement(IWebElement element)
         {
             WebDriverWait espera = new WebDriverWait(WebDriver.driver, timeout: TimeSpan.FromSeconds(30));
             espera.Until(condition: SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(element));
         }
 
-        public static void preencherTxtField(String value, IWebElement element)
+        public static void SendKeys(String value, IWebElement element)
         {
-            esperaElemento(element);
+            WaitForElement(element);
             element.Clear();
             element.SendKeys(value);
         }
 
-        public static void clicarBtn(IWebElement element)
+        public static void Click(IWebElement element)
         {
-            esperaElemento(element);
+            WaitForElement(element);
             element.Click();
         }
 
-        private static Random random = new Random();
-        public static String geraNomeRandom()
+        public static String GeraStringRandom()
         {
+            Random random = new Random();
             int length = 10;
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        public static void VerificaDiretorio(string fullReportFilePath)
+        {
+            var directory = Path.GetDirectoryName(fullReportFilePath);
+            if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
         }
     }
 }

@@ -38,15 +38,15 @@ namespace AutomacaoMantisBase2.PageObjects
 
         public void clicarBtnListaProjetos()
         {
-            Uteis.Uteis.esperaElemento(LstProjetos);
-            Uteis.Uteis.clicarBtn(LstProjetos);
+            Uteis.Uteis.WaitForElement(LstProjetos);
+            Uteis.Uteis.Click(LstProjetos);
             Assert.AreEqual("Procurar", FldProcurarProjeto.GetAttribute("placeholder"));
         }
 
         public void selecionarProjetoPadrao()
         {
-            Uteis.Uteis.esperaElemento(LnkProjeto);
-            Uteis.Uteis.clicarBtn(LnkProjeto);
+            Uteis.Uteis.WaitForElement(LnkProjeto);
+            Uteis.Uteis.Click(LnkProjeto);
         }
     }
 }

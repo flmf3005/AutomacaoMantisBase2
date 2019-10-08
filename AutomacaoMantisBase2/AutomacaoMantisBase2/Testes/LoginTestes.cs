@@ -37,8 +37,8 @@ namespace AutomacaoMantisBase2.Testes
         {
             PageObjects.LoginPageObjects loginPage = new PageObjects.LoginPageObjects(driver);
             loginSucesso();
-            Uteis.Uteis.clicarBtn(loginPage.BtnUserInfo);
-            Uteis.Uteis.clicarBtn(loginPage.LnkSair);
+            Uteis.Uteis.Click(loginPage.BtnUserInfo);
+            Uteis.Uteis.Click(loginPage.LnkSair);
             loginPage.verificaLoginPage();
         }
 
