@@ -37,17 +37,19 @@ namespace AutomacaoMantisBase2.Uteis
             espera.Until(condition: SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(element));
         }
 
-        public static void SendKeys(String value, IWebElement element)
+        public static void SendKeys(String value, IWebElement element, String nomeElemento)
         {
             WaitForElement(element);
             element.Clear();
             element.SendKeys(value);
+            Relatorio.AddTestInfo("SendKeys || " + nomeElemento + "- Valor: " + value);
         }
 
-        public static void Click(IWebElement element)
+        public static void Click(IWebElement element, String nomeElemento)
         {
             WaitForElement(element);
             element.Click();
+            Relatorio.AddTestInfo("Click || " + nomeElemento);
         }
 
         public static String GeraStringRandom()

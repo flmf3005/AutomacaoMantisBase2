@@ -47,7 +47,7 @@ namespace AutomacaoMantisBase2.Uteis
             TEST = EXTENT_REPORT.CreateTest(testName).AssignCategory(testCategory);
         }
 
-        public static void AddTestInfo(int methodLevel, string text)
+        public static void AddTestInfo(string text)
         {
             TEST.Log(Status.Pass, text);
         }

@@ -35,8 +35,8 @@ namespace AutomacaoMantisBase2.Testes
         public void logoffSucesso()
         {
             loginSucesso();
-            Uteis.Uteis.Click(loginPage.BtnUserInfo);
-            Uteis.Uteis.Click(loginPage.LnkSair);
+            Uteis.Uteis.Click(loginPage.BtnUserInfo, "Usuário");
+            Uteis.Uteis.Click(loginPage.LnkSair, "Sair");
             loginPage.verificaLoginPage();
         }
 

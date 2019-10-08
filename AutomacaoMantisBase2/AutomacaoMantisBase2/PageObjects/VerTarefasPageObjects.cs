@@ -50,27 +50,27 @@ namespace AutomacaoMantisBase2.PageObjects
             int qntBugs = totalBugs();
             while (qntBugs > 0)
             {
-                Uteis.Uteis.Click(ChBoxSelTudo);
-                Uteis.Uteis.Click(ComboBoxAcoes);
+                Uteis.Uteis.Click(ChBoxSelTudo, "Selecionar Todos");
+                Uteis.Uteis.Click(ComboBoxAcoes, "Lista Ações");
                 var selectElement = new SelectElement(ComboBoxAcoes);
                 selectElement.SelectByText("Apagar");
-                Uteis.Uteis.Click(BtnOk);
-                Uteis.Uteis.Click(BtnApagarTarefas);
+                Uteis.Uteis.Click(BtnOk, "OK");
+                Uteis.Uteis.Click(BtnApagarTarefas, "Apagar Tarefas");
                 qntBugs = totalBugs();
             }
         }
 
         public void alterarPrioridade()
         {
-            Uteis.Uteis.Click(ChBoxSelTudo);
-            Uteis.Uteis.Click(ComboBoxAcoes);
+            Uteis.Uteis.Click(ChBoxSelTudo, "Selecionar Todos");
+            Uteis.Uteis.Click(ComboBoxAcoes, "Lista Ações");
             var selectElement = new SelectElement(ComboBoxAcoes);
             selectElement.SelectByText("Atualizar Prioridade");
-            Uteis.Uteis.Click(BtnOk);
-            Uteis.Uteis.Click(ComboBoxPrioridade);
+            Uteis.Uteis.Click(BtnOk, "OK");
+            Uteis.Uteis.Click(ComboBoxPrioridade, "Prioridade");
             selectElement = new SelectElement(ComboBoxPrioridade);
             selectElement.SelectByText("alta");
-            Uteis.Uteis.Click(BtnAtualizarPrioridade);
+            Uteis.Uteis.Click(BtnAtualizarPrioridade, "Atualizar Prioridade");
         }
 
     }

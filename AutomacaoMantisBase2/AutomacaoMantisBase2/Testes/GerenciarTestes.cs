@@ -21,7 +21,7 @@ namespace AutomacaoMantisBase2.Testes
         public void acessarGerenciarUsuariosPage()
         {
             homeTest.acessarGerenciarPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnUsuarios);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnUsuarios, "Gerenciar Usuários");
             Assert.AreEqual(true, gerenciarPageObjects.TitUsuarios.Displayed);
         }
 
@@ -29,7 +29,7 @@ namespace AutomacaoMantisBase2.Testes
         public void acessarGerenciarProjetosPage()
         {
             homeTest.acessarGerenciarPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnProjetos);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnProjetos, "Gerenciar Projetos");
             Assert.AreEqual(true, gerenciarPageObjects.TitProjetos.Displayed);
         }
 
@@ -37,7 +37,7 @@ namespace AutomacaoMantisBase2.Testes
         public void acessarGerenciarMarcadoresPage()
         {
             homeTest.acessarGerenciarPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnMarcadores);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnMarcadores, "Gerenciar Marcadores");
             Assert.AreEqual(true, gerenciarPageObjects.TitMarcadores.Displayed);
         }
 
@@ -45,7 +45,7 @@ namespace AutomacaoMantisBase2.Testes
         public void acessarGerenciarCamposPersonalizadosPage()
         {
             homeTest.acessarGerenciarPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCampPers);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCampPers, "Gerenciar Campos Personalizados");
             Assert.AreEqual(true, gerenciarPageObjects.TitCampPers.Displayed);
         }
 
@@ -53,7 +53,7 @@ namespace AutomacaoMantisBase2.Testes
         public void acessarGerenciarPerfisGlobaisPage()
         {
             homeTest.acessarGerenciarPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnPerfisGlob);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnPerfisGlob, "Gerenciar Perfis Globais");
             Uteis.Uteis.WaitForElement(gerenciarPageObjects.TitPerfGlobais);
             Assert.AreEqual(true, gerenciarPageObjects.TitPerfGlobais.Displayed);
         }
@@ -62,7 +62,7 @@ namespace AutomacaoMantisBase2.Testes
         public void acessarGerenciarPluginsPage()
         {
             homeTest.acessarGerenciarPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnPlugins);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnPlugins, "Gerenciar Plugins");
             Assert.AreEqual(true, gerenciarPageObjects.TitPlugins.Displayed);
         }
 
@@ -70,8 +70,8 @@ namespace AutomacaoMantisBase2.Testes
         public void acessarRelatorioPermissoesPage()
         {
             homeTest.acessarGerenciarPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfig);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnRelPermissoes);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfig, "Gerenciar Configurações");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnRelPermissoes, "Relatório Permissões");
             Assert.AreEqual(true, gerenciarPageObjects.TitRelPermissoes.Displayed);
         }
 
@@ -79,8 +79,8 @@ namespace AutomacaoMantisBase2.Testes
         public void acessarRelatorioConfiguraçãoPage()
         {
             homeTest.acessarGerenciarPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfig);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnRelConfiguracao);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfig, "Gerenciar Configurações");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnRelConfiguracao, "Relatório Configuração");
             Assert.AreEqual(true, gerenciarPageObjects.TitRelConfiguracao.Displayed);
         }
 
@@ -88,8 +88,8 @@ namespace AutomacaoMantisBase2.Testes
         public void acessarLimiaresPage()
         {
             homeTest.acessarGerenciarPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfig);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnLimiares);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfig, "Gerenciar Configurações");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnLimiares, "Limiares do Fluxo de Trabalho");
             Assert.AreEqual(true, gerenciarPageObjects.TitLimiares.Displayed);
         }
 
@@ -97,8 +97,8 @@ namespace AutomacaoMantisBase2.Testes
         public void acessarTransicoesFluxoPage()
         {
             homeTest.acessarGerenciarPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfig);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnTransFluxo);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfig, "Gerenciar Configurações");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnTransFluxo, "Transições de Fluxo de Trabalho");
             Assert.AreEqual(true, gerenciarPageObjects.TitTransFluxo.Displayed);
         }
 
@@ -106,8 +106,8 @@ namespace AutomacaoMantisBase2.Testes
         public void acessarNotificacoesEmailPage()
         {
             homeTest.acessarGerenciarPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfig);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnNotifEmail);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfig, "Gerenciar Configurações");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnNotifEmail, "Notificações por E-Mail");
             Assert.AreEqual(true, gerenciarPageObjects.TitNotifEmail.Displayed);
         }
 
@@ -115,8 +115,8 @@ namespace AutomacaoMantisBase2.Testes
         public void acessarGerenciarColunasPage()
         {
             homeTest.acessarGerenciarPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfig);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnGerColunas);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfig, "Gerenciar Configurações");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnGerColunas, "Gerenciar Colunas");
             Assert.AreEqual(true, gerenciarPageObjects.TitGerColunas.Displayed);
         }
 
@@ -125,10 +125,10 @@ namespace AutomacaoMantisBase2.Testes
         {
             String nome = String.Concat("Projeto Teste ", Uteis.Uteis.GeraStringRandom());
             acessarGerenciarProjetosPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnProjetos);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoProjeto);
-            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeProjeto);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarProjeto);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnProjetos, "Gerenciar Projetos");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoProjeto, "Novo Projeto");
+            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeProjeto, "Nome Projeto");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarProjeto, "Criar Projeto");
             Assert.AreEqual(true, gerenciarPageObjects.VerificaProjeto(nome));
         }
 
@@ -137,14 +137,14 @@ namespace AutomacaoMantisBase2.Testes
         {         
             String nome = String.Concat("Usuario Teste ", Uteis.Uteis.GeraStringRandom());
             acessarGerenciarProjetosPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnProjetos);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoProjeto);
-            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeProjeto);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarProjeto);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnProjetos, "Gerenciar Projetos");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoProjeto, "Novo Projeto");
+            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeProjeto, "Nome Projeto");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarProjeto, "Criar Projeto");
             Thread.Sleep(5000);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoProjeto);
-            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeProjeto);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarProjeto);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoProjeto, "Novo Projeto");
+            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeProjeto, "Nome Projeto");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarProjeto, "Criar Projeto");
             Assert.AreEqual(true, gerenciarPageObjects.MsgErro.Displayed);
         }
 
@@ -153,8 +153,8 @@ namespace AutomacaoMantisBase2.Testes
         {         
             String nome = String.Concat("Marcador Teste ", Uteis.Uteis.GeraStringRandom());
             acessarGerenciarMarcadoresPage();
-            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldMarcador);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarMarcador);
+            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldMarcador, "Marcador");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarMarcador, "Criar Marcador");
             Assert.AreEqual(true, gerenciarPageObjects.LnkMarcadorCriado(nome).Displayed);
         }
 
@@ -163,10 +163,10 @@ namespace AutomacaoMantisBase2.Testes
         {         
             String nome = String.Concat("Campo Teste ", Uteis.Uteis.GeraStringRandom());
             acessarGerenciarCamposPersonalizadosPage();
-            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeCampo);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoCampo);
+            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeCampo, "Nome Campo");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoCampo, "Novo Campo");
             Thread.Sleep(5000);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCampPers);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCampPers, "Gerenciar Campos Personalizados");
             Assert.AreEqual(true, gerenciarPageObjects.LnkCampoCriado(nome).Displayed);
         }
 
@@ -175,13 +175,13 @@ namespace AutomacaoMantisBase2.Testes
         {         
             String nome = String.Concat("Campo Teste ", Uteis.Uteis.GeraStringRandom());
             acessarGerenciarCamposPersonalizadosPage();
-            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeCampo);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoCampo);
+            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeCampo, "Nome Campo");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoCampo, "Novo Campo");
             Thread.Sleep(5000);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCampPers);
-            Uteis.Uteis.Click(gerenciarPageObjects.LnkCampoCriado(nome));
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnApagarCampoPers);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfirmaApagarCampo);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCampPers, "Gerenciar Campos Personalizados");
+            Uteis.Uteis.Click(gerenciarPageObjects.LnkCampoCriado(nome), nome);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnApagarCampoPers, "Apagar Campo Personalizado");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnConfirmaApagarCampo, "Apagar Campo");
             Assert.AreEqual(true, gerenciarPageObjects.MsgSucesso.Displayed);
         }
 
@@ -190,12 +190,12 @@ namespace AutomacaoMantisBase2.Testes
         {         
             String nome = String.Concat("Campo Teste ", Uteis.Uteis.GeraStringRandom());
             acessarGerenciarCamposPersonalizadosPage();
-            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeCampo);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoCampo);
+            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeCampo, "Nome Campo");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoCampo, "Novo Campo");
             Thread.Sleep(5000);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCampPers);
-            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeCampo);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoCampo);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCampPers, "Gerenciar Campos Personalizados");
+            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeCampo, "Nome Campo");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoCampo, "Novo Campo");
             Assert.AreEqual(true, gerenciarPageObjects.MsgErro.Displayed);
         }
 
@@ -204,7 +204,7 @@ namespace AutomacaoMantisBase2.Testes
         {         
             String nome = String.Concat("Campo Teste ", Uteis.Uteis.GeraStringRandom());
             acessarGerenciarCamposPersonalizadosPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoCampo);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnNovoCampo, "Novo Campo");
             Assert.AreEqual(true, gerenciarPageObjects.MsgErro.Displayed);
         }
 
@@ -213,11 +213,11 @@ namespace AutomacaoMantisBase2.Testes
         {         
             String nome = String.Concat("Usuario Teste ", Uteis.Uteis.GeraStringRandom());
             acessarGerenciarUsuariosPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarConta);
-            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeUsuario);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarUsuario);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarConta, "Criar Conta");
+            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeUsuario, "Nome Usuario");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarUsuario, "Criar Usuário");
             Thread.Sleep(5000);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnUsuarios);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnUsuarios, "Gerenciar Usuários");
             Assert.AreEqual(true, gerenciarPageObjects.LnkUsuarioCriado(nome).Displayed);
         }
 
@@ -227,14 +227,14 @@ namespace AutomacaoMantisBase2.Testes
         {         
             String nome = String.Concat("Usuario Teste ", Uteis.Uteis.GeraStringRandom());
             acessarGerenciarUsuariosPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarConta);
-            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeUsuario);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarUsuario);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarConta, "Criar Conta");
+            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeUsuario, "Nome Usuario");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarUsuario, "Criar Usuário");
             Thread.Sleep(5000);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnUsuarios);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarConta);
-            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeUsuario);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarUsuario);          
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnUsuarios, "Gerenciar Usuários");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarConta, "Criar Conta");
+            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeUsuario, "Nome Usuario");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarUsuario, "Criar Usuário");          
             Assert.AreEqual(true, gerenciarPageObjects.MsgErro.Displayed);
         }
 
@@ -243,14 +243,14 @@ namespace AutomacaoMantisBase2.Testes
         {         
             String nome = String.Concat("Usuario Teste ", Uteis.Uteis.GeraStringRandom());
             acessarGerenciarUsuariosPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarConta);
-            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeUsuario);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarUsuario);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarConta, "Criar Conta");
+            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeUsuario, "Nome Usuario");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarUsuario, "Criar Usuário");
             Thread.Sleep(5000);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnUsuarios);
-            Uteis.Uteis.Click(gerenciarPageObjects.LnkUsuarioCriado(nome));
-            Uteis.Uteis.SendKeys(String.Concat(nome, " - alterado"), gerenciarPageObjects.TxtFldEditarNomeUsuario);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnAtualizarUsuario);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnUsuarios, "Gerenciar Usuários");
+            Uteis.Uteis.Click(gerenciarPageObjects.LnkUsuarioCriado(nome), nome);
+            Uteis.Uteis.SendKeys(String.Concat(nome, " - alterado"), gerenciarPageObjects.TxtFldEditarNomeUsuario, "Editar");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnAtualizarUsuario, "Atualizar Usuário");
             Assert.AreEqual("Operação realizada com sucesso.", gerenciarPageObjects.MsgSucesso.Text);
         }
 
@@ -259,14 +259,14 @@ namespace AutomacaoMantisBase2.Testes
         {         
             String nome = String.Concat("Usuario Teste ", Uteis.Uteis.GeraStringRandom());
             acessarGerenciarUsuariosPage();
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarConta);
-            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeUsuario);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarUsuario);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarConta, "Criar Conta");
+            Uteis.Uteis.SendKeys(nome, gerenciarPageObjects.TxtFldNomeUsuario, "Nome Usuario");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnCriarUsuario, "Criar Usuário");
             Thread.Sleep(5000);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnUsuarios);
-            Uteis.Uteis.Click(gerenciarPageObjects.LnkUsuarioCriado(nome));
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnApagarUsuario);
-            Uteis.Uteis.Click(gerenciarPageObjects.BtnApagarConta);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnUsuarios, "Gerenciar Usuários");
+            Uteis.Uteis.Click(gerenciarPageObjects.LnkUsuarioCriado(nome), nome);
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnApagarUsuario, "Apagar Usuário");
+            Uteis.Uteis.Click(gerenciarPageObjects.BtnApagarConta, "Apagar Conta");
             Assert.AreEqual("Operação realizada com sucesso.", gerenciarPageObjects.MsgSucesso.Text);
         }
     }

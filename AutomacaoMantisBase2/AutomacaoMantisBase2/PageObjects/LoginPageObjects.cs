@@ -30,37 +30,37 @@ namespace AutomacaoMantisBase2.PageObjects
         public void inserirUsername()
         {
             Uteis.Uteis.WaitForElement(TxtUserName);
-            Uteis.Uteis.SendKeys(ConfigurationManager.AppSettings["username".ToString()], TxtUserName);
-            Uteis.Uteis.Click(BtnEntrar);
+            Uteis.Uteis.SendKeys(ConfigurationManager.AppSettings["username".ToString()], TxtUserName, "Username");
+            Uteis.Uteis.Click(BtnEntrar, "Entrar");
             Assert.AreEqual("Perdeu a sua senha?", LnkPerdeuSenha.Text);
         }
 
         public void inserirUsernameVazio()
         {
             Uteis.Uteis.WaitForElement(TxtUserName);
-            Uteis.Uteis.Click(BtnEntrar);
+            Uteis.Uteis.Click(BtnEntrar, "Entrar");
             Assert.AreEqual("Sua conta pode estar desativada ou bloqueada ou o nome de usuário e a senha que você digitou não estão corretos.", driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='AVISO:'])[1]/preceding::p[1]")).Text);
         }
         public void inserirSenha()
         {
             Uteis.Uteis.WaitForElement(TxtSenha);
-            Uteis.Uteis.SendKeys(ConfigurationManager.AppSettings["password".ToString()], TxtSenha);
-            Uteis.Uteis.Click(BtnEntrar);
+            Uteis.Uteis.SendKeys(ConfigurationManager.AppSettings["password".ToString()], TxtSenha, "Senha");
+            Uteis.Uteis.Click(BtnEntrar, "Entrar");
             Assert.AreEqual(ConfigurationManager.AppSettings["username".ToString()], BtnUserInfo.Text);
         }
 
         public void inserirSenhaIncorreta()
         {
             Uteis.Uteis.WaitForElement(TxtSenha);
-            Uteis.Uteis.SendKeys("senha", TxtSenha);
-            Uteis.Uteis.Click(BtnEntrar);
+            Uteis.Uteis.SendKeys("senha", TxtSenha, "Senha");
+            Uteis.Uteis.Click(BtnEntrar, "Entrar");
             Assert.AreEqual("Sua conta pode estar desativada ou bloqueada ou o nome de usuário e a senha que você digitou não estão corretos.", driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='AVISO:'])[1]/preceding::p[1]")).Text);
         }
 
         public void clicarBtnCriarConta()
         {
             Uteis.Uteis.WaitForElement(LnkCriarNovaConta);
-            Uteis.Uteis.Click(LnkCriarNovaConta);
+            Uteis.Uteis.Click(LnkCriarNovaConta, "Criar Nova Conta");
             Assert.AreEqual("username", TxtUserName.GetAttribute("id"));
         }
     }

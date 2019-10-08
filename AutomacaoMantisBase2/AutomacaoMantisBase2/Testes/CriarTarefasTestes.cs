@@ -25,9 +25,9 @@ namespace AutomacaoMantisBase2.Testes
             String resumo = String.Concat("Resumo Teste ", Uteis.Uteis.GeraStringRandom());
             String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.GeraStringRandom());
             homeTest.acessarCriarTarefasPage();
-            Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo);
-            Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao);
-            Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa);
+            Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo, "Resumo");
+            Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao, "Descrição");
+            Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa, "Criar Tarefa");
             Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
             string idtarefa = criarTarefaPageObjects.idTarefaCriada(criarTarefaPageObjects.BtnTarefaCriada);
             Thread.Sleep(5000);
@@ -42,19 +42,19 @@ namespace AutomacaoMantisBase2.Testes
             String descricao = String.Concat("Descrição Teste ", Uteis.Uteis.GeraStringRandom());
             String resumo2 = String.Concat("Resumo Teste ", Uteis.Uteis.GeraStringRandom());
             String descricao2 = String.Concat("Descrição Teste ", Uteis.Uteis.GeraStringRandom());
-            Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo);
-            Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao);
-            Uteis.Uteis.Click(criarTarefaPageObjects.ChBContinuar);
-            Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa);
+            Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo, "Resumo");
+            Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao, "Descrição");
+            Uteis.Uteis.Click(criarTarefaPageObjects.ChBContinuar, "Continuar");
+            Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa, "Criar Tarefa");
             Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
             string idtarefa1 = criarTarefaPageObjects.idTarefaCriada(criarTarefaPageObjects.BtnTarefaCriada);
             Thread.Sleep(5000);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Uteis.Uteis.WaitForElement(criarTarefaPageObjects.FldResumo);
-            Uteis.Uteis.SendKeys(resumo2, criarTarefaPageObjects.FldResumo);
-            Uteis.Uteis.SendKeys(descricao2, criarTarefaPageObjects.FldDescricao);
-            Uteis.Uteis.Click(criarTarefaPageObjects.ChBContinuar);
-            Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa);
+            Uteis.Uteis.SendKeys(resumo2, criarTarefaPageObjects.FldResumo, "Resumo");
+            Uteis.Uteis.SendKeys(descricao2, criarTarefaPageObjects.FldDescricao, "Descrição");
+            Uteis.Uteis.Click(criarTarefaPageObjects.ChBContinuar, "Continuar");
+            Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa, "Criar Tarefa");
             Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
             string idtarefa2 = criarTarefaPageObjects.idTarefaCriada(criarTarefaPageObjects.BtnTarefaCriada);
             Thread.Sleep(5000);
@@ -68,9 +68,9 @@ namespace AutomacaoMantisBase2.Testes
 
         {
             homeTest.acessarCriarTarefasPage();
-            Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo);
-            Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao);
-            Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa);
+            Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo, "Resumo");
+            Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao, "Descrição");
+            Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa, "Criar Tarefa");
             Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
             string idtarefa = criarTarefaPageObjects.idTarefaCriada(criarTarefaPageObjects.BtnTarefaCriada);
             Thread.Sleep(5000);
