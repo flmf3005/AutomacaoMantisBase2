@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +60,12 @@
     <Compile Include="Testes\LoginTestes.cs" />
     <Compile Include="Testes\HomeTestes.cs" />
     <Compile Include="Testes\VerTarefasTestes.cs" />
+    <Compile Include="Uteis\Banco.cs" />
+    <Compile Include="Uteis\Queries.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Queries.resx</DependentUpon>
+    </Compile>
     <Compile Include="Uteis\Relatorio.cs" />
     <Compile Include="Uteis\Uteis.cs" />
   </ItemGroup>
@@ -83,6 +90,9 @@
     </PackageReference>
     <PackageReference Include="MongoDB.Driver.Core">
       <Version>2.9.2</Version>
+    </PackageReference>
+    <PackageReference Include="MySql.Data">
+      <Version>8.0.17</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
@@ -109,6 +119,12 @@
   <ItemGroup>
     <Folder Include="Arquivos\" />
     <Folder Include="SeleniumGrid\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Uteis\Queries.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Queries.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

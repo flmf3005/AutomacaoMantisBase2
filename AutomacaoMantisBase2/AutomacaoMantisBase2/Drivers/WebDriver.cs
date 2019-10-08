@@ -18,6 +18,7 @@ namespace AutomacaoMantisBase2.Drivers
         public void OneTimeSetUp()
         {
             Relatorio.CreateReport();
+            Banco.InicializarTestes();
         }
 
         [SetUp]
