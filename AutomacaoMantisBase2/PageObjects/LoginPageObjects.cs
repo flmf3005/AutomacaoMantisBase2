@@ -13,18 +13,18 @@ namespace AutomacaoMantisBase2.PageObjects
 
         }
 
-        public IWebElement FldEntrar => driver.FindElement(By.XPath("//div[@id='login-box']/div/div/h4"));
-        public IWebElement TxtUserName => driver.FindElement(By.Id("username"));
-        public IWebElement BtnEntrar => driver.FindElement(By.XPath("//input[@value='Entrar']"));
-        public IWebElement TxtSenha => driver.FindElement(By.Id("password"));
-        public IWebElement LnkPerdeuSenha => driver.FindElement(By.LinkText("Perdeu a sua senha?"));
-        public IWebElement BtnUserInfo => driver.FindElement(By.CssSelector("span.user-info"));
-        public IWebElement LnkCriarNovaConta => driver.FindElement(By.LinkText("criar uma nova conta"));
-        public IWebElement LnkSair => driver.FindElement(By.LinkText("Sair"));
+        public By FldEntrar => By.XPath("//div[@id='login-box']/div/div/h4");
+        public By TxtUserName => By.Id("username");
+        public By BtnEntrar => By.XPath("//input[@value='Entrar']");
+        public By TxtSenha => By.Id("password");
+        public By LnkPerdeuSenha => By.LinkText("Perdeu a sua senha?");
+        public By BtnUserInfo => By.CssSelector("span.user-info");
+        public By LnkCriarNovaConta => By.LinkText("criar uma nova conta");
+        public By LnkSair => By.LinkText("Sair");
         public void verificaLoginPage()
         {
-            Uteis.Uteis.WaitForElement(element: FldEntrar);
-            Assert.AreEqual("Entrar", FldEntrar.Text);
+            IWebElement entrar = Uteis.Uteis.WaitForElement(FldEntrar);
+            Assert.AreEqual("Entrar", entrar.Text);
         }
 
         public void inserirUsername()
@@ -32,7 +32,17 @@ namespace AutomacaoMantisBase2.PageObjects
             Uteis.Uteis.WaitForElement(TxtUserName);
             Uteis.Uteis.SendKeys(ConfigurationManager.AppSettings["username".ToString()], TxtUserName, "Username");
             Uteis.Uteis.Click(BtnEntrar, "Entrar");
-            Assert.AreEqual("Perdeu a sua senha?", LnkPerdeuSenha.Text);
+            IWebElement perdeuSenha = Uteis.Uteis.WaitForElement(LnkPerdeuSenha);
+            Assert.AreEqual("Perdeu a sua senha?", perdeuSenha.Text);
+        }
+
+        public void inserirUsernameJavaScript()
+        {
+            Uteis.Uteis.WaitForElement(TxtUserName);
+            Uteis.Uteis.SendKeysJavaScript(ConfigurationManager.AppSettings["username".ToString()], TxtUserName, "Username");
+            Uteis.Uteis.ClickJavaScript(BtnEntrar, "Entrar");
+            IWebElement perdeuSenha = Uteis.Uteis.WaitForElement(LnkPerdeuSenha);
+            Assert.AreEqual("Perdeu a sua senha?", perdeuSenha.Text);
         }
 
         public void inserirUsernameVazio()
@@ -46,7 +56,8 @@ namespace AutomacaoMantisBase2.PageObjects
             Uteis.Uteis.WaitForElement(TxtSenha);
             Uteis.Uteis.SendKeys(ConfigurationManager.AppSettings["password".ToString()], TxtSenha, "Senha");
             Uteis.Uteis.Click(BtnEntrar, "Entrar");
-            Assert.AreEqual(ConfigurationManager.AppSettings["username".ToString()], BtnUserInfo.Text);
+            IWebElement usuarioBtn = Uteis.Uteis.WaitForElement(BtnUserInfo);
+            Assert.AreEqual(ConfigurationManager.AppSettings["username".ToString()], usuarioBtn.Text);
         }
 
         public void inserirSenhaIncorreta()
@@ -61,7 +72,8 @@ namespace AutomacaoMantisBase2.PageObjects
         {
             Uteis.Uteis.WaitForElement(LnkCriarNovaConta);
             Uteis.Uteis.Click(LnkCriarNovaConta, "Criar Nova Conta");
-            Assert.AreEqual("username", TxtUserName.GetAttribute("id"));
+            IWebElement usuario = Uteis.Uteis.WaitForElement(TxtUserName);
+            Assert.AreEqual("username", usuario.GetAttribute("id"));
         }
     }
 }

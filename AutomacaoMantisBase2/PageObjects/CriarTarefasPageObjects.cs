@@ -14,13 +14,13 @@ namespace AutomacaoMantisBase2.PageObjects
         {
         }
 
-        public IWebElement FormTitInsercao => driver.FindElement(By.XPath("//form[@id='report_bug_form']/div/div/h4"));
-        public IWebElement FldResumo => driver.FindElement(By.Id("summary"));
-        public IWebElement FldDescricao => driver.FindElement(By.Id("description"));
-        public IWebElement ChBContinuar => driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Continuar Relatando'])[1]/following::span[1]"));
-        public IWebElement BtnCriarTarefa => driver.FindElement(By.XPath("//input[@value='Criar Nova Tarefa']"));
-        public IWebElement LnkCriarTarefa => driver.FindElement(By.LinkText("Criar Tarefa"));
-        public IWebElement BtnTarefaCriada => driver.FindElement(By.XPath("//a[contains(text(),'Visualizar Tarefa Enviada')]"));
+        public By FormTitInsercao => By.XPath("//form[@id='report_bug_form']/div/div/h4");
+        public By FldResumo => By.Id("summary");
+        public By FldDescricao => By.Id("description");
+        public By ChBContinuar => By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Continuar Relatando'])[1]/following::span[1]");
+        public By BtnCriarTarefa => By.XPath("//input[@value='Criar Nova Tarefa']");
+        public By LnkCriarTarefa => By.LinkText("Criar Tarefa");
+        public By BtnTarefaCriada => By.XPath("//a[contains(text(),'Visualizar Tarefa Enviada')]");
         
         public string idTarefaCriada (IWebElement element)
         {
@@ -32,7 +32,7 @@ namespace AutomacaoMantisBase2.PageObjects
         public bool VerificaLknTarefaCriada (string tarefa)
         {
             string xpath = String.Concat("//a[@href='/view.php?id=", tarefa, "']");
-            Uteis.Uteis.WaitForElement(driver.FindElement(By.XPath(xpath)));
+            Uteis.Uteis.WaitForElement(By.XPath(xpath));
             return driver.FindElement(By.XPath(xpath)).Displayed;
         }
         

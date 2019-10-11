@@ -25,7 +25,7 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             Uteis.Uteis.Click(homePageObjects.MenuMyView, "Minha Visão");
             Uteis.Uteis.WaitForElement(myViewPageObjects.LnkAtrbuidosAMim);
-            Assert.AreEqual("Atribuídos a Mim (não resolvidos)", myViewPageObjects.LnkAtrbuidosAMim.Text);
+            Assert.AreEqual("Atribuídos a Mim (não resolvidos)", Uteis.Uteis.WaitForElement(myViewPageObjects.LnkAtrbuidosAMim).Text);
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             Uteis.Uteis.Click(homePageObjects.MenuVerTarefas, "Ver Tarefas");
             Uteis.Uteis.WaitForElement(verTarefasPageObjects.DivFiltros);
-            Assert.AreEqual("Filtros", verTarefasPageObjects.DivFiltros.Text);
+            Assert.AreEqual("Filtros", Uteis.Uteis.WaitForElement(verTarefasPageObjects.DivFiltros).Text);
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             Uteis.Uteis.Click(homePageObjects.MenuCriarTarefas, "Criar Tarefa");
             Uteis.Uteis.WaitForElement(criarTarefasPageObjects.FormTitInsercao);
-            Assert.AreEqual("Digite os Detalhes do Relatório", criarTarefasPageObjects.FormTitInsercao.Text);
+            Assert.AreEqual("Digite os Detalhes do Relatório", Uteis.Uteis.WaitForElement(criarTarefasPageObjects.FormTitInsercao).Text);
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             Uteis.Uteis.Click(homePageObjects.MenuRegistroMudancas, "Registro Mudanças");
             Uteis.Uteis.WaitForElement(regMudancaPageObjects.MsgNenhumRegistro);
-            Assert.AreEqual("Nenhum registro de mudança disponível. Apenas tarefas que indiquem a versão na qual foi resolvida aparecerão nos registros de mudança.", regMudancaPageObjects.MsgNenhumRegistro.Text);
+            Assert.AreEqual("Nenhum registro de mudança disponível. Apenas tarefas que indiquem a versão na qual foi resolvida aparecerão nos registros de mudança.", Uteis.Uteis.WaitForElement(regMudancaPageObjects.MsgNenhumRegistro).Text);
         }
 
         [Test]
@@ -61,7 +61,7 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             Uteis.Uteis.Click(homePageObjects.MenuPlanejamento, "Planejamento");
             Uteis.Uteis.WaitForElement(planejamentoPageObjects.MsgNenhumPlanejamento);
-            Assert.AreEqual("Nenhum planejamento disponível. Apenas tarefas com a versão indicada aparecerão no planejamento.", planejamentoPageObjects.MsgNenhumPlanejamento.Text);
+            Assert.AreEqual("Nenhum planejamento disponível. Apenas tarefas com a versão indicada aparecerão no planejamento.", Uteis.Uteis.WaitForElement(planejamentoPageObjects.MsgNenhumPlanejamento).Text);
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             Uteis.Uteis.Click(homePageObjects.MenuResumo, "Resumo");
             Uteis.Uteis.WaitForElement(resumoPageObjects.DivResumo);
-            Assert.AreEqual("Resumo", resumoPageObjects.DivResumo.Text);
+            Assert.AreEqual("Resumo", Uteis.Uteis.WaitForElement(resumoPageObjects.DivResumo).Text);
         }
         [Test]
         public void acessarGerenciarPage()
@@ -78,7 +78,7 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             Uteis.Uteis.Click(homePageObjects.MenuGerenciar, "Gerenciar");
             Uteis.Uteis.WaitForElement(homePageObjects.TitInformacao);
-            Assert.AreEqual("Informação do Site", homePageObjects.TitInformacao.Text);
+            Assert.AreEqual("Informação do Site", Uteis.Uteis.WaitForElement(homePageObjects.TitInformacao).Text);
         }
 
         [Test]
@@ -87,7 +87,7 @@ namespace AutomacaoMantisBase2.Testes
             loginTest.loginSucesso();
             Uteis.Uteis.Click(homePageObjects.BtnUserInfo, "Usuário");
             Uteis.Uteis.Click(homePageObjects.LnkMinhaConta, "Minha Conta");
-            Assert.AreEqual("Alterar Conta", homePageObjects.TitInformacao.Text);
+            Assert.AreEqual("Alterar Conta", Uteis.Uteis.WaitForElement(homePageObjects.TitInformacao).Text);
         }
 
         [Test]
@@ -97,7 +97,7 @@ namespace AutomacaoMantisBase2.Testes
             Uteis.Uteis.Click(homePageObjects.BtnUserInfo, "Usuário");
             Uteis.Uteis.Click(homePageObjects.LnkMinhaConta, "Minha Conta");
             Uteis.Uteis.Click(homePageObjects.LnkPreferencias, "Preferências");
-            Assert.AreEqual("Preferências da Conta", homePageObjects.TitInformacao.Text);
+            Assert.AreEqual("Preferências da Conta", Uteis.Uteis.WaitForElement(homePageObjects.TitInformacao).Text);
         }
 
         [Test]
@@ -107,7 +107,7 @@ namespace AutomacaoMantisBase2.Testes
             Uteis.Uteis.Click(homePageObjects.BtnUserInfo, "Usuário");
             Uteis.Uteis.Click(homePageObjects.LnkMinhaConta, "Minha Conta");
             Uteis.Uteis.Click(homePageObjects.LnkGerenciarColunas, "Gerenciar Colunas");
-            Assert.AreEqual("Gerenciar Colunas", homePageObjects.TitInformacao.Text);
+            Assert.AreEqual("Gerenciar Colunas", Uteis.Uteis.WaitForElement(homePageObjects.TitInformacao).Text);
         }
 
         [Test]
@@ -117,7 +117,7 @@ namespace AutomacaoMantisBase2.Testes
             Uteis.Uteis.Click(homePageObjects.BtnUserInfo, "Usuário");
             Uteis.Uteis.Click(homePageObjects.LnkMinhaConta, "Minha Conta");
             Uteis.Uteis.Click(homePageObjects.LnkPerfis, "Perfis");
-            Assert.AreEqual("Adicionar Perfil", homePageObjects.TitInformacao.Text);
+            Assert.AreEqual("Adicionar Perfil", Uteis.Uteis.WaitForElement(homePageObjects.TitInformacao).Text);
         }
 
         [Test]
@@ -127,7 +127,7 @@ namespace AutomacaoMantisBase2.Testes
             Uteis.Uteis.Click(homePageObjects.BtnUserInfo, "Usuário");
             Uteis.Uteis.Click(homePageObjects.LnkMinhaConta, "Minha Conta");
             Uteis.Uteis.Click(homePageObjects.LnkTokensAPI, "Tokens API");
-            Assert.AreEqual("Criar token API", homePageObjects.TitInformacao.Text);
+            Assert.AreEqual("Criar token API", Uteis.Uteis.WaitForElement(homePageObjects.TitInformacao).Text);
         }
     }
 }

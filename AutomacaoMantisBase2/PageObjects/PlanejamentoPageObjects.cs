@@ -14,7 +14,7 @@ namespace AutomacaoMantisBase2.PageObjects
         {
         }
 
-        public IWebElement MsgNenhumPlanejamento => driver.FindElement(By.CssSelector("p.lead"));
+        public By MsgNenhumPlanejamento => By.CssSelector("p.lead");
 
     }
 }

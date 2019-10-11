@@ -36,11 +36,9 @@ namespace AutomacaoMantisBase2.Testes
             Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo, "Resumo");
             Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao, "Descrição");
             Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa, "Criar Tarefa");
-            Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
-            string idtarefa = criarTarefaPageObjects.idTarefaCriada(criarTarefaPageObjects.BtnTarefaCriada);
-            Thread.Sleep(5000);
-            Uteis.Uteis.SendKeys(idtarefa, verTarefasPageObjects.TxtFldBugID, "Bug Id");
-            verTarefasPageObjects.TxtFldBugID.SendKeys(Keys.Enter);
+            IWebElement tarefaCriadaBtn = Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
+            string idtarefa = criarTarefaPageObjects.idTarefaCriada(tarefaCriadaBtn);
+            Uteis.Uteis.SendKeys(idtarefa + Keys.Enter, verTarefasPageObjects.TxtFldBugID, "Bug Id");
             Assert.AreEqual(driver.Url.ToString(), ConfigurationManager.AppSettings["URL"].ToString() + "/view.php?id=" + idtarefa);
         }
 
@@ -49,9 +47,8 @@ namespace AutomacaoMantisBase2.Testes
         {
             String idtarefa = "99999999";
             homeTest.acessarVerTarefasPage();
-            Uteis.Uteis.SendKeys(idtarefa, verTarefasPageObjects.TxtFldBugID, "Bug Id");
-            verTarefasPageObjects.TxtFldBugID.SendKeys(Keys.Enter);
-            Assert.AreEqual(true,verTarefasPageObjects.MsgErro.Displayed);
+            Uteis.Uteis.SendKeys(idtarefa + Keys.Enter, verTarefasPageObjects.TxtFldBugID, "Bug Id");
+            Assert.AreEqual(true, Uteis.Uteis.WaitForElement(verTarefasPageObjects.MsgErro).Displayed);
         }
 
         [Test]
@@ -63,7 +60,6 @@ namespace AutomacaoMantisBase2.Testes
             Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo, "Resumo");
             Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao, "Descrição");
             Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa, "Criar Tarefa");
-            Thread.Sleep(5000);
             Uteis.Uteis.SendKeys(resumo, verTarefasPageObjects.TxtBuscar, "Buscar");
             Uteis.Uteis.Click(verTarefasPageObjects.BtnAplicarFiltro, "Aplicar Filtro");
             verTarefasPageObjects.deletarTudo();
@@ -80,12 +76,11 @@ namespace AutomacaoMantisBase2.Testes
             Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo, "Resumo");
             Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao, "Descrição");
             Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa, "Criar Tarefa");
-            Thread.Sleep(5000);
             Uteis.Uteis.SendKeys(resumo, verTarefasPageObjects.TxtBuscar, "Buscar");
             Uteis.Uteis.Click(verTarefasPageObjects.BtnAplicarFiltro, "Aplicar Filtro");
             verTarefasPageObjects.alterarPrioridade();
             Uteis.Uteis.Click(verTarefasPageObjects.BtnAplicarFiltro, "Aplicar Filtro");
-            Assert.AreEqual(verTarefasPageObjects.PrioridadeAlta, verTarefasPageObjects.PrioridadeTarefaFiltro);
+            Assert.AreEqual(Uteis.Uteis.WaitForElement(verTarefasPageObjects.PrioridadeAlta), Uteis.Uteis.WaitForElement(verTarefasPageObjects.PrioridadeTarefaFiltro));
         }
     }
 }

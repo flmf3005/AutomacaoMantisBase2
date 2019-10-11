@@ -59,9 +59,11 @@ namespace AutomacaoMantisBase2.Drivers
                     chrome.AddArgument("--disable-dev-shm-usage");
                     chrome.AddArgument("--disable-browser-side-navigation");
                     chrome.AddArgument("--disable-gpu");
-                    chrome.AddArgument("--window-size=1366,768");
+                    chrome.AddArgument("--window-size=1920,1080");
+                    chrome.AddArgument("--lang=pt-BR");
                     chrome.PageLoadStrategy = PageLoadStrategy.Normal;
                     driver = new ChromeDriver(chrome);
+                    //driver.Manage().Window.Maximize();
                 }
                 else { 
                     switch (navegador)

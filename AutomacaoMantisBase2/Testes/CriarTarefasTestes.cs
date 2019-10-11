@@ -28,9 +28,8 @@ namespace AutomacaoMantisBase2.Testes
             Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo, "Resumo");
             Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao, "Descrição");
             Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa, "Criar Tarefa");
-            Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
-            string idtarefa = criarTarefaPageObjects.idTarefaCriada(criarTarefaPageObjects.BtnTarefaCriada);
-            Thread.Sleep(5000);
+            IWebElement tarefaCriadaBtn = Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
+            string idtarefa = criarTarefaPageObjects.idTarefaCriada(tarefaCriadaBtn);
             Assert.AreEqual(true, criarTarefaPageObjects.VerificaLknTarefaCriada(idtarefa));
         }
 
@@ -46,18 +45,16 @@ namespace AutomacaoMantisBase2.Testes
             Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao, "Descrição");
             Uteis.Uteis.Click(criarTarefaPageObjects.ChBContinuar, "Continuar");
             Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa, "Criar Tarefa");
-            Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
-            string idtarefa1 = criarTarefaPageObjects.idTarefaCriada(criarTarefaPageObjects.BtnTarefaCriada);
-            Thread.Sleep(5000);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            IWebElement tarefaCriadaBtn = Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
+            string idtarefa1 = criarTarefaPageObjects.idTarefaCriada(tarefaCriadaBtn);
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Uteis.Uteis.WaitForElement(criarTarefaPageObjects.FldResumo);
             Uteis.Uteis.SendKeys(resumo2, criarTarefaPageObjects.FldResumo, "Resumo");
             Uteis.Uteis.SendKeys(descricao2, criarTarefaPageObjects.FldDescricao, "Descrição");
             Uteis.Uteis.Click(criarTarefaPageObjects.ChBContinuar, "Continuar");
             Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa, "Criar Tarefa");
-            Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
-            string idtarefa2 = criarTarefaPageObjects.idTarefaCriada(criarTarefaPageObjects.BtnTarefaCriada);
-            Thread.Sleep(5000);
+            tarefaCriadaBtn = Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
+            string idtarefa2 = criarTarefaPageObjects.idTarefaCriada(tarefaCriadaBtn);
             Assert.AreEqual(true, criarTarefaPageObjects.VerificaLknTarefaCriada(idtarefa1));
             Assert.AreEqual(true, criarTarefaPageObjects.VerificaLknTarefaCriada(idtarefa2));
         }
@@ -71,9 +68,8 @@ namespace AutomacaoMantisBase2.Testes
             Uteis.Uteis.SendKeys(resumo, criarTarefaPageObjects.FldResumo, "Resumo");
             Uteis.Uteis.SendKeys(descricao, criarTarefaPageObjects.FldDescricao, "Descrição");
             Uteis.Uteis.Click(criarTarefaPageObjects.BtnCriarTarefa, "Criar Tarefa");
-            Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
-            string idtarefa = criarTarefaPageObjects.idTarefaCriada(criarTarefaPageObjects.BtnTarefaCriada);
-            Thread.Sleep(5000);
+            IWebElement tarefaCriadaBtn = Uteis.Uteis.WaitForElement(criarTarefaPageObjects.BtnTarefaCriada);
+            string idtarefa = criarTarefaPageObjects.idTarefaCriada(tarefaCriadaBtn);
             Assert.AreEqual(true, criarTarefaPageObjects.VerificaLknTarefaCriada(idtarefa));
         }
 

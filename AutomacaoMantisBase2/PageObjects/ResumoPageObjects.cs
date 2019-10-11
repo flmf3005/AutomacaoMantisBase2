@@ -14,7 +14,7 @@ namespace AutomacaoMantisBase2.PageObjects
         {
         }
 
-        public IWebElement DivResumo => driver.FindElement(By.XPath("//div[@id='main-container']/div[2]/div[2]/div/ul/li/a"));
+        public By DivResumo => By.XPath("//div[@id='main-container']/div[2]/div[2]/div/ul/li/a");
 
     }
 }

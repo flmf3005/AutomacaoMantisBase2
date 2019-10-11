@@ -31,33 +31,45 @@ namespace AutomacaoMantisBase2.Uteis
             return strAppFolderData;
         }
 
-        public static void WaitForElement(IWebElement element)
+        public static IWebElement WaitForElement(By locator)
         {
             WebDriverWait espera = new WebDriverWait(WebDriver.driver, timeout: TimeSpan.FromSeconds(30));
+            espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(locator));
+            IWebElement element = WebDriver.driver.FindElement(locator);
             espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(element));
+            return element;
         }
 
-        public static void SendKeys(String value, IWebElement element, String nomeElemento)
+        public static void SendKeys(String value, By locator, String nomeElemento)
         {
-            WaitForElement(element);
-            ScrollToElementJavaScript(element);
+            IWebElement element =  WaitForElement(locator);
             element.Clear();
             element.SendKeys(value);
             Relatorio.AddTestInfo("SendKeys || " + nomeElemento + "- Valor: " + value);
         }
 
-        public static void Click(IWebElement element, String nomeElemento)
+        public static void Click(By locator, String nomeElemento)
         {
-            WaitForElement(element);
-            ScrollToElementJavaScript(element);
+            IWebElement element =  WaitForElement(locator);
             element.Click();
             Relatorio.AddTestInfo("Click || " + nomeElemento);
         }
 
-        public static void ScrollToElementJavaScript(IWebElement element)
+        public static void SendKeysJavaScript(String value, By locator, String nomeElemento)
         {
             IJavaScriptExecutor javaScript = (IJavaScriptExecutor)WebDriver.driver;
-            javaScript.ExecuteScript("arguments[0].scrollIntoView(true);", element);
+            IWebElement element = WaitForElement(locator);
+            element.Clear();
+            javaScript.ExecuteScript("arguments[0].value='" + value + "';", element);
+            Relatorio.AddTestInfo("SendKeys Java Script || " + nomeElemento + "- Valor: " + value);
+        }
+
+        public static void ClickJavaScript(By locator, String nomeElemento)
+        {
+            IJavaScriptExecutor javaScript = (IJavaScriptExecutor)WebDriver.driver;
+            IWebElement element = WaitForElement(locator);
+            javaScript.ExecuteScript("arguments[0].click();", element);
+            Relatorio.AddTestInfo("Click Java Script || " + nomeElemento);
         }
 
         public static String GeraStringRandom()

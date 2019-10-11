@@ -19,9 +19,9 @@ namespace AutomacaoMantisBase2.Testes
         }
 
         [Test]
-        public void inserirUsername()
+        public void inserirUsernameJS()
         {
-            loginPage.inserirUsername();
+            loginPage.inserirUsernameJavaScript();
         }
 
         [Test]

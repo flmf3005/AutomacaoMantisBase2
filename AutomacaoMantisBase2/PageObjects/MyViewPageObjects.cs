@@ -15,7 +15,7 @@ namespace AutomacaoMantisBase2.PageObjects
         {
         }
 
-        public IWebElement LnkAtrbuidosAMim => driver.FindElement(By.LinkText("Atribuídos a Mim (não resolvidos)"));
+        public By LnkAtrbuidosAMim => By.LinkText("Atribuídos a Mim (não resolvidos)");
         
     }
 }
