@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2047
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomacaoMantisBase2", "AutomacaoMantisBase2\AutomacaoMantisBase2.csproj", "{4E967C3F-A159-48B4-B39C-0FDC864B8C12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomacaoAPIMantisBase2", "AutomacaoAPIMantisBase2\AutomacaoAPIMantisBase2.csproj", "{0AECAD21-6729-4734-B40D-72B41F071C76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4E967C3F-A159-48B4-B39C-0FDC864B8C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E967C3F-A159-48B4-B39C-0FDC864B8C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E967C3F-A159-48B4-B39C-0FDC864B8C12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AECAD21-6729-4734-B40D-72B41F071C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AECAD21-6729-4734-B40D-72B41F071C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AECAD21-6729-4734-B40D-72B41F071C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AECAD21-6729-4734-B40D-72B41F071C76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
