@@ -118,7 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="InicializaTestes" xml:space="preserve">
-    <value>DELETE FROM `mantis_bug_history_table`;
+    <value>DELETE FROM `mantis_api_token_table` ;
+DELETE FROM `mantis_bug_history_table`;
 DELETE FROM `mantis_bug_text_table`;
 DELETE FROM `mantis_bug_table`;
 DELETE FROM `mantis_custom_field_table`;
@@ -126,6 +127,8 @@ DELETE FROM `mantis_project_table`;
 DELETE FROM `mantis_tag_table`;
 DELETE FROM `mantis_user_table` WHERE username &lt;&gt; 'administrator';
 INSERT INTO `mantis_project_table` (`id`, `name`, `status`, `enabled`, `view_state`, `access_min`, `file_path`, `description`, `category_id`, `inherit_global`) 
-VALUES (1, 'Projeto Inicial', 10, 1, 10, 10, '', '', 1, 1);</value>
+VALUES (1, 'Projeto Inicial', 10, 1, 10, 10, '', '', 1, 1);
+INSERT INTO `mantis_api_token_table` (`id`, `user_id`, `name`, `hash`, `date_created`, `date_used`) 
+VALUES (1, 1, 'admin_token', '4b45cf63ca6c7a97c596d5525ece7b7ff998f74a37cdc4d74d0ecde008ada323', 1573652861, 1);</value>
   </data>
 </root>

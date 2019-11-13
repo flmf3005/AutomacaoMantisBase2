@@ -9,6 +9,7 @@ namespace AutomacaoAPIMantisBase2.Bases
         public void OneTimeSetUp()
         {
             ExtentReportHelpers.CreateReport();
+            DBHelpers.InicializarTestes();
         }
 
         [SetUp]
