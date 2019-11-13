@@ -10,15 +10,14 @@ namespace AutomacaoAPIMantisBase2.Requests
     {
         public Request()
         {
-            requestService = "/api/Solicitacao/ItensAssistenciais/Validos";
-            method = Method.POST;
+            requestService = "/api/rest/projects/";
+            method = Method.GET;
             httpBasicAuthenticator = true;
         }
 
-        public void setJsonBody(string pacienteId, string itensAssistenciais)
+        public void setJsonBody()
         {
-            jsonBody = File.ReadAllText(GeneralHelpers.ReturnProjectPath() + "Jsons/Solicitacao/SolicitacaoItensAssitenciaisValidosJson.json", Encoding.UTF8);
-            jsonBody = jsonBody.Replace("$pacienteId", pacienteId).Replace("$itensAssistenciais", itensAssistenciais);
+            
         }
     }
 }

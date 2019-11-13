@@ -24,7 +24,7 @@ namespace AutomacaoAPIMantisBase2.Bases
         {
             //Dicionário de headeres deve ser iniciado com os headers comuns a todos os métodos da API
             {"Content-Type", "application/json"},
-            {"Authorization", "application/json"},
+            {"Authorization", ConfigurationManager.AppSettings["apiToken"].ToString()},
         };
 
         protected IDictionary<string, string> cookies = new Dictionary<string, string>()

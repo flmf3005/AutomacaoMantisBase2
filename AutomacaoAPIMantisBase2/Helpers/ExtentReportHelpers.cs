@@ -34,7 +34,7 @@ namespace AutomacaoAPIMantisBase2.Helpers
                 GeneralHelpers.EnsureDirectoryExists(reportRootPath);
                 GeneralHelpers.EnsureDirectoryExists(reportPath);
 
-                var htmlReporter = new ExtentHtmlReporter(fullReportFilePath);
+                var htmlReporter = new ExtentV3HtmlReporter(fullReportFilePath);
                 EXTENT_REPORT = new ExtentReports();
                 EXTENT_REPORT.AttachReporter(htmlReporter);
             }
