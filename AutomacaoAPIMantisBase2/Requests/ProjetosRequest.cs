@@ -6,11 +6,18 @@ using System.Text;
 
 namespace AutomacaoAPIMantisBase2.Requests
 {
-    public class Request : RequestBase
+    public class ProjetosRequest : RequestBase
     {
-        public Request()
+        public ProjetosRequest()
         {
             requestService = "/api/rest/projects/";
+            method = Method.GET;
+            httpBasicAuthenticator = true;
+        }
+
+        public ProjetosRequest(int project)
+        {
+            requestService = "/api/rest/projects/" + project;
             method = Method.GET;
             httpBasicAuthenticator = true;
         }

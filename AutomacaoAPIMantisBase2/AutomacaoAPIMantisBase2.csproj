@@ -144,8 +144,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Requests\Request.cs" />
-    <Compile Include="Tests\Tests.cs" />
+    <Compile Include="Requests\TarefasRequest.cs" />
+    <Compile Include="Requests\ProjetosRequest.cs" />
+    <Compile Include="Tests\TarefasTests.cs" />
+    <Compile Include="Tests\ProjetosTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

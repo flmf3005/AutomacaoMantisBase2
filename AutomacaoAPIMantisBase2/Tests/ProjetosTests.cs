@@ -5,7 +5,7 @@ using RestSharp;
 
 namespace AutomacaoAPIMantisBase2.Tests
 {
-    public class Tests : TestBase
+    public class ProjetosTests : TestBase
     {
         [Test]
         public void BuscaTodosOsProjetos()
@@ -17,7 +17,28 @@ namespace AutomacaoAPIMantisBase2.Tests
 
             #endregion
 
-            Request request = new Request();
+            ProjetosRequest request = new ProjetosRequest();
+            request.setJsonBody();
+
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
+        [Test]
+        public void BuscaProjetoEspecifico()
+        {
+            #region Parameters
+            string statusCodeEsperado = "OK";
+
+            //Resultado esperado
+
+            #endregion
+
+            ProjetosRequest request = new ProjetosRequest(1);
             request.setJsonBody();
 
             IRestResponse<dynamic> response = request.ExecuteRequest();
