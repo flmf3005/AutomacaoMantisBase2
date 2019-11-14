@@ -144,20 +144,22 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Requests\UsuariosRequest.cs" />
     <Compile Include="Requests\FiltrosRequest.cs" />
     <Compile Include="Requests\TarefasRequest.cs" />
     <Compile Include="Requests\ProjetosRequest.cs" />
+    <Compile Include="Tests\UsuariosTests.cs" />
     <Compile Include="Tests\FiltrosTests.cs" />
     <Compile Include="Tests\TarefasTests.cs" />
     <Compile Include="Tests\ProjetosTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Jsons\Usuario.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DBSteps\" />
-    <Folder Include="Jsons\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Queries\Queries.resx">
