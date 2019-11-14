@@ -52,7 +52,7 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void DeletaUsuario()
         {
             #region Parameters
-            string statusCodeEsperado = "Created";
+            string statusCodeEsperado = "NoContent";
             string idUser = null;
             //Resultado esperado
 
@@ -61,7 +61,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             UsuariosRequest request = new UsuariosRequest(Method.POST);
             request.setJsonBody("usertest", "usertest", "Usuario Teste", "delete@gmail.com");
             IRestResponse<dynamic> response = request.ExecuteRequest();
-            idUser = response.Data["result"][0]["id"];
+            idUser = response.Data["user"]["id"];
 
             request = null;
             request = new UsuariosRequest(Method.DELETE);

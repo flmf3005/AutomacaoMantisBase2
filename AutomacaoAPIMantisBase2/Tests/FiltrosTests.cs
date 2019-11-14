@@ -1,4 +1,5 @@
 ﻿using AutomacaoAPIMantisBase2.Bases;
+using AutomacaoAPIMantisBase2.Helpers;
 using AutomacaoAPIMantisBase2.Requests;
 using NUnit.Framework;
 using RestSharp;
@@ -53,13 +54,14 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void DeletaFiltroEspecifico()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
+            string statusCodeEsperado = "NoContent";
 
             //Resultado esperado
 
             #endregion
 
-            FiltrosRequest request = new FiltrosRequest(1, Method.DELETE);
+            DBHelpers.InsereFiltro();
+            FiltrosRequest request = new FiltrosRequest(2, Method.DELETE);
             request.setJsonBody();
 
             IRestResponse<dynamic> response = request.ExecuteRequest();

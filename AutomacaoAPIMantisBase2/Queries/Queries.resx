@@ -123,6 +123,7 @@ DELETE FROM `mantis_bug_history_table`;
 DELETE FROM `mantis_bug_text_table`;
 DELETE FROM `mantis_bug_table`;
 DELETE FROM `mantis_custom_field_table`;
+DELETE FROM `mantis_filters_table`  WHERE id &lt;&gt; 1;
 DELETE FROM `mantis_project_table`;
 DELETE FROM `mantis_tag_table`;
 DELETE FROM `mantis_user_table` WHERE username &lt;&gt; 'administrator';
@@ -130,5 +131,8 @@ INSERT INTO `mantis_project_table` (`id`, `name`, `status`, `enabled`, `view_sta
 VALUES (1, 'Projeto Inicial', 10, 1, 10, 10, '', '', 1, 1);
 INSERT INTO `mantis_api_token_table` (`id`, `user_id`, `name`, `hash`, `date_created`, `date_used`) 
 VALUES (1, 1, 'admin_token', '4b45cf63ca6c7a97c596d5525ece7b7ff998f74a37cdc4d74d0ecde008ada323', 1573652861, 1);</value>
+  </data>
+  <data name="InsereFiltro" xml:space="preserve">
+    <value>INSERT INTO `mantis_filters_table` (`id`, `user_id`, `project_id`, `is_public`, `name`, `filter_string`) VALUES (2, 1, 0, 0, 'filter1', 'v9#{"_version":"v9","_view_type":"simple","category_id":["0"],"severity":[0],"status":[0],"highlight_changed":6,"reporter_id":[0],"handler_id":[0],"project_id":[-3],"resolution":[0],"build":["0"],"version":["0"],"hide_status":[90],"monitor_user_id":[0],"sort":"last_updated","dir":"DESC","per_page":50,"match_type":0,"platform":["0"],"os":["0"],"os_build":["0"],"fixed_in_version":["0"],"target_version":["0"],"profile_id":[0],"priority":[0],"note_user_id":[0],"sticky":true,"filter_by_date":false,"start_month":"11","end_month":"11","start_day":1,"end_day":"14","start_year":"2019","end_year":"2019","filter_by_last_updated_date":false,"last_updated_start_month":"11","last_updated_end_month":"11","last_updated_start_day":1,"last_updated_end_day":"14","last_updated_start_year":"2019","last_updated_end_year":"2019","search":"","view_state":0,"tag_string":"","tag_select":0,"relationship_type":-1,"relationship_bug":0,"custom_fields":[]}');</value>
   </data>
 </root>

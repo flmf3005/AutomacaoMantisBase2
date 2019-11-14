@@ -17,7 +17,6 @@ namespace AutomacaoAPIMantisBase2.Helpers
         public static ExtentTest TEST;
 
         static string reportName = ConfigurationManager.AppSettings["nomeDesafio"].ToString() + "_" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm");
-
         static string projectBinDebugPath = AppDomain.CurrentDomain.BaseDirectory;
         static FileInfo fileInfo = new FileInfo(projectBinDebugPath);
         static DirectoryInfo projectFolder = fileInfo.Directory;
@@ -43,7 +42,7 @@ namespace AutomacaoAPIMantisBase2.Helpers
         public static void AddTest()
         {
             string testName = TestContext.CurrentContext.Test.MethodName;
-            string testCategory = TestContext.CurrentContext.Test.ClassName.Substring(27);
+            string testCategory = TestContext.CurrentContext.Test.ClassName.Substring(30);
             TEST = EXTENT_REPORT.CreateTest(testName).AssignCategory(testCategory);
         }
 
