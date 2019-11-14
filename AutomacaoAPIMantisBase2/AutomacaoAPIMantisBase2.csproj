@@ -144,10 +144,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Requests\LangRequest.cs" />
+    <Compile Include="Requests\ConfigRequest.cs" />
     <Compile Include="Requests\UsuariosRequest.cs" />
     <Compile Include="Requests\FiltrosRequest.cs" />
     <Compile Include="Requests\TarefasRequest.cs" />
     <Compile Include="Requests\ProjetosRequest.cs" />
+    <Compile Include="Tests\LangTests.cs" />
+    <Compile Include="Tests\ConfigTests.cs" />
     <Compile Include="Tests\UsuariosTests.cs" />
     <Compile Include="Tests\FiltrosTests.cs" />
     <Compile Include="Tests\TarefasTests.cs" />
