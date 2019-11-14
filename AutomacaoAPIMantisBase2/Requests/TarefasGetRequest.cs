@@ -6,32 +6,34 @@ using System.Text;
 
 namespace AutomacaoAPIMantisBase2.Requests
 {
-    public class TarefasRequest : RequestBase
+    public class TarefasGetRequest : RequestBase
     {
-        public TarefasRequest()
+        public TarefasGetRequest()
         {
             requestService = "/api/rest/issues/";
             method = Method.GET;
             httpBasicAuthenticator = true;
         }
 
-        public TarefasRequest(string issue)
+        public TarefasGetRequest(string issue)
         {
             requestService = "/api/rest/issues/" + issue;
             method = Method.GET;
             httpBasicAuthenticator = true;
         }
 
-        public TarefasRequest(int project)
+        public TarefasGetRequest(int project)
         {
             requestService = "/api/rest/issues/?project_id=" + project;
             method = Method.GET;
             httpBasicAuthenticator = true;
         }
 
-        public void setJsonBody()
+        public TarefasGetRequest(string filter, bool filtro)
         {
-            
+            requestService = "/api/rest/issues?filter_id=" + filter;
+            method = Method.GET;
+            httpBasicAuthenticator = true;
         }
     }
 }

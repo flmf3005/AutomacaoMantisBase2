@@ -63,6 +63,7 @@ namespace AutomacaoAPIMantisBase2.Queries {
         /// <summary>
         ///   Looks up a localized string similar to DELETE FROM `mantis_api_token_table` ;
         ///DELETE FROM `mantis_bug_history_table`;
+        ///DELETE FROM `mantis_bug_file_table`;
         ///DELETE FROM `mantis_bug_text_table`;
         ///DELETE FROM `mantis_bug_table`;
         ///DELETE FROM `mantis_custom_field_table`;
@@ -70,20 +71,11 @@ namespace AutomacaoAPIMantisBase2.Queries {
         ///DELETE FROM `mantis_project_table`;
         ///DELETE FROM `mantis_tag_table`;
         ///DELETE FROM `mantis_user_table` WHERE username &lt;&gt; &apos;administrator&apos;;
-        ///INSERT INTO `mantis_project_table` (`id`, `name`, `status`, `enabled`, `view_state`, `access_min`, `file_path`, `description`, ` [rest of string was truncated]&quot;;.
+        ///INSERT INTO `mantis_project_table` (`id`, `name`, `status`, `enabled`, `view_state`, `acce [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InicializaTestes {
             get {
                 return ResourceManager.GetString("InicializaTestes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO `mantis_filters_table` (`id`, `user_id`, `project_id`, `is_public`, `name`, `filter_string`) VALUES (2, 1, 0, 0, &apos;filter1&apos;, &apos;v9#{&quot;_version&quot;:&quot;v9&quot;,&quot;_view_type&quot;:&quot;simple&quot;,&quot;category_id&quot;:[&quot;0&quot;],&quot;severity&quot;:[0],&quot;status&quot;:[0],&quot;highlight_changed&quot;:6,&quot;reporter_id&quot;:[0],&quot;handler_id&quot;:[0],&quot;project_id&quot;:[-3],&quot;resolution&quot;:[0],&quot;build&quot;:[&quot;0&quot;],&quot;version&quot;:[&quot;0&quot;],&quot;hide_status&quot;:[90],&quot;monitor_user_id&quot;:[0],&quot;sort&quot;:&quot;last_updated&quot;,&quot;dir&quot;:&quot;DESC&quot;,&quot;per_page&quot;:50,&quot;match_type&quot;:0,&quot;platform&quot;:[&quot;0&quot;],&quot;os&quot;:[&quot;0&quot;],&quot;os_build&quot;:[&quot;0&quot;],&quot;fixed_in_ver [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string InsereFiltro {
-            get {
-                return ResourceManager.GetString("InsereFiltro", resourceCulture);
             }
         }
     }

@@ -146,9 +146,10 @@
     </Compile>
     <Compile Include="Requests\LangRequest.cs" />
     <Compile Include="Requests\ConfigRequest.cs" />
+    <Compile Include="Requests\ArquivosTarefasGetRequest.cs" />
     <Compile Include="Requests\UsuariosRequest.cs" />
     <Compile Include="Requests\FiltrosRequest.cs" />
-    <Compile Include="Requests\TarefasRequest.cs" />
+    <Compile Include="Requests\TarefasGetRequest.cs" />
     <Compile Include="Requests\ProjetosRequest.cs" />
     <Compile Include="Tests\LangTests.cs" />
     <Compile Include="Tests\ConfigTests.cs" />
@@ -162,9 +163,7 @@
     <None Include="Jsons\Usuario.json" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DBSteps\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Queries\Queries.resx">
       <Generator>ResXFileCodeGenerator</Generator>

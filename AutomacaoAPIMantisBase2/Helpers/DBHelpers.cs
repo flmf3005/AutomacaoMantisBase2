@@ -34,10 +34,5 @@ namespace AutomacaoAPIMantisBase2.Helpers
         {
             ExecuteQuery(Queries.Queries.InicializaTestes);
         }
-
-        public static void InsereFiltro()
-        {
-            ExecuteQuery(Queries.Queries.InsereFiltro);
-        }
     }
 }

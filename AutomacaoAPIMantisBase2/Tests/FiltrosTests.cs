@@ -60,7 +60,6 @@ namespace AutomacaoAPIMantisBase2.Tests
 
             #endregion
 
-            DBHelpers.InsereFiltro();
             FiltrosRequest request = new FiltrosRequest(2, Method.DELETE);
             request.setJsonBody();
 
