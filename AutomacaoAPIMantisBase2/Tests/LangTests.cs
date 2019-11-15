@@ -9,7 +9,7 @@ namespace AutomacaoAPIMantisBase2.Tests
 {
     public class LangTests : TestBase
     {
-        [Test]
+        [Test][Parallelizable]
         public void BuscaLangEspecifico()
         {
             #region Parameters
@@ -29,7 +29,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void BuscaVariosLang()
         {
             #region Parameters

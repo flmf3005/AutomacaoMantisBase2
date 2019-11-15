@@ -8,7 +8,7 @@ namespace AutomacaoAPIMantisBase2.Tests
 {
     public class FiltrosTests : TestBase
     {
-        [Test]
+        [Test][Parallelizable]
         public void BuscaTodosOsFiltros()
         {
             #region Parameters
@@ -29,7 +29,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void BuscaFiltroEspecifico()
         {
             #region Parameters
@@ -50,7 +50,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void DeletaFiltroEspecifico()
         {
             #region Parameters

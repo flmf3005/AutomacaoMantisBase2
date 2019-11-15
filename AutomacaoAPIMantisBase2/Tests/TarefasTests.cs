@@ -7,7 +7,7 @@ namespace AutomacaoAPIMantisBase2.Tests
 {
     public class TarefasTests : TestBase
     {
-        [Test]
+        [Test][Parallelizable]
         public void BuscaTodasAsTarefas()
         {
             #region Parameters
@@ -27,7 +27,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void BuscaTarefaEspecifica()
         {
             #region Parameters
@@ -47,7 +47,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void BuscaTarefasPorFiltroID()
         {
             #region Parameters
@@ -67,7 +67,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void BuscaTarefasAtribuidasUsuarioToken()
         {
             #region Parameters
@@ -87,7 +87,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void BuscaTarefasNaoAtribuidasUsuarioToken()
         {
             #region Parameters
@@ -107,7 +107,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void BuscaTarefasReportadasUsuarioToken()
         {
             #region Parameters
@@ -127,7 +127,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void BuscaTarefasMonitoradasUsuarioToken()
         {
             #region Parameters
@@ -147,7 +147,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void BuscaTodasAsTarefasDeProjeto()
         {
             #region Parameters
@@ -167,7 +167,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void BuscaTodosArquivosDeTarefa()
         {
             #region Parameters
@@ -187,7 +187,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void BuscaUnicoArquivoDeTarefa()
         {
             #region Parameters

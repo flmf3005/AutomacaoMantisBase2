@@ -9,7 +9,7 @@ namespace AutomacaoAPIMantisBase2.Tests
 {
     public class ConfigTests : TestBase
     {
-        [Test]
+        [Test][Parallelizable]
         public void BuscaConfigEspecifico()
         {
             #region Parameters
@@ -29,7 +29,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void BuscaVariosConfig()
         {
             #region Parameters

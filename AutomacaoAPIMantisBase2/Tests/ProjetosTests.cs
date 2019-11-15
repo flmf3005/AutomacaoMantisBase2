@@ -7,7 +7,7 @@ namespace AutomacaoAPIMantisBase2.Tests
 {
     public class ProjetosTests : TestBase
     {
-        [Test]
+        [Test][Parallelizable]
         public void BuscaTodosOsProjetos()
         {
             #region Parameters
@@ -28,7 +28,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void BuscaProjetoEspecifico()
         {
             #region Parameters

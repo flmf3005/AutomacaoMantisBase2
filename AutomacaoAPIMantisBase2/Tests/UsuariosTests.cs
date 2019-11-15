@@ -7,7 +7,7 @@ namespace AutomacaoAPIMantisBase2.Tests
 {
     public class UsuariosTests : TestBase
     {
-        [Test]
+        [Test][Parallelizable]
         public void BuscaDadosUsuarioAtual()
         {
             #region Parameters
@@ -27,7 +27,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void InsereNovoUsuario()
         {
             #region Parameters
@@ -48,7 +48,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
-        [Test]
+        [Test][Parallelizable]
         public void DeletaUsuario()
         {
             #region Parameters
@@ -59,7 +59,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             #endregion
 
             UsuariosRequest request = new UsuariosRequest(Method.POST);
-            request.setJsonBody("usertest", "usertest", "Usuario Teste", "delete@gmail.com");
+            request.setJsonBody("deleteusertest", "deleteusertest", "Usuario Delete Teste", "delete@gmail.com");
             IRestResponse<dynamic> response = request.ExecuteRequest();
             idUser = response.Data["user"]["id"];
 
