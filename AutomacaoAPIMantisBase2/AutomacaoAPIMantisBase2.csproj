@@ -147,6 +147,7 @@
     <Compile Include="Requests\LangRequest.cs" />
     <Compile Include="Requests\ConfigRequest.cs" />
     <Compile Include="Requests\ArquivosTarefasGetRequest.cs" />
+    <Compile Include="Requests\TarefasPostRequest.cs" />
     <Compile Include="Requests\UsuariosRequest.cs" />
     <Compile Include="Requests\FiltrosRequest.cs" />
     <Compile Include="Requests\TarefasGetRequest.cs" />
@@ -160,6 +161,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Jsons\Tarefas.json" />
+    <None Include="Jsons\Anexos.json" />
     <None Include="Jsons\Usuario.json" />
     <None Include="packages.config" />
   </ItemGroup>

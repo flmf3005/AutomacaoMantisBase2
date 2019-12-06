@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -108,6 +109,16 @@ namespace AutomacaoAPIMantisBase2.Helpers
             StackTrace st = new StackTrace();
             StackFrame sf = st.GetFrame(level);
             return sf.GetMethod().Name;
+        }
+
+        public static String GetPastaArquivos()
+        {
+            String strAppDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase).Substring(6);
+
+            var gparent = Directory.GetParent(Directory.GetParent(strAppDir).ToString());
+
+            String strAppFolderData = gparent + "\\Arquivos";
+            return strAppFolderData;
         }
     }
 
