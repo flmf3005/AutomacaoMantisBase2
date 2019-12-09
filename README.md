@@ -335,6 +335,10 @@ Perceba que será criado um pipeline com um Agent Job 1 mas ainda sem nenhuma a�
   Onde também é possível configurar a execução do pipeline todas as vezes que for incluída alguma alteração no projeto:
   ![](https://i.imgur.com/Gljb2U3.png)
 
+Assim está configurado a execução de pipeline de integração contínua no Azure DevOps.
+A ferramenta ainda permite que seja gerado as instruções YAML, clicando na opção `View YAML`
+![](https://i.imgur.com/EMGkzro.png)
+
 Assim está finalizado o fluxo de todas as atividades propostas no início deste projeto. 
 Faça as devidas referências caso utilize este projeto.
 
