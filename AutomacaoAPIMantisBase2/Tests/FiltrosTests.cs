@@ -50,6 +50,28 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
+        [Test]
+        [Parallelizable]
+        public void BuscaFiltroInexistente()
+        {
+            #region Parameters
+            string statusCodeEsperado = "OK";
+
+            //Resultado esperado
+
+            #endregion
+
+            FiltrosRequest request = new FiltrosRequest(999, Method.GET);
+            request.setJsonBody();
+
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
         [Test][Parallelizable]
         public void DeletaFiltroEspecifico()
         {
@@ -61,6 +83,28 @@ namespace AutomacaoAPIMantisBase2.Tests
             #endregion
 
             FiltrosRequest request = new FiltrosRequest(2, Method.DELETE);
+            request.setJsonBody();
+
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
+        [Test]
+        [Parallelizable]
+        public void DeletaFiltroInexistente()
+        {
+            #region Parameters
+            string statusCodeEsperado = "NotFound";
+
+            //Resultado esperado
+
+            #endregion
+
+            FiltrosRequest request = new FiltrosRequest(999, Method.DELETE);
             request.setJsonBody();
 
             IRestResponse<dynamic> response = request.ExecuteRequest();

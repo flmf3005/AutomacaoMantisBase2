@@ -29,6 +29,27 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
+        [Test]
+        [Parallelizable]
+        public void BuscaLangInexistente()
+        {
+            #region Parameters
+            string statusCodeEsperado = "OK";
+
+            //Resultado esperado
+
+            #endregion
+
+            LangRequest request = new LangRequest("testes_testes");
+
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
         [Test][Parallelizable]
         public void BuscaVariosLang()
         {

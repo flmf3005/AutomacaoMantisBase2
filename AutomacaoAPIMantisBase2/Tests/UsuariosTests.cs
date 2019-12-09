@@ -74,5 +74,26 @@ namespace AutomacaoAPIMantisBase2.Tests
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
             });
         }
+
+        [Test]
+        [Parallelizable]
+        public void DeletaUsuarioInexistente()
+        {
+            #region Parameters
+            string statusCodeEsperado = "NotFound";
+            string idUser = "999";
+            //Resultado esperado
+
+            #endregion
+
+            UsuariosRequest request = new UsuariosRequest(Method.DELETE);
+            request.setUserId(idUser);
+            IRestResponse response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
     }
 }

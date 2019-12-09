@@ -29,6 +29,27 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
+        [Test]
+        [Parallelizable]
+        public void BuscaConfigInexistente()
+        {
+            #region Parameters
+            string statusCodeEsperado = "OK";
+
+            //Resultado esperado
+
+            #endregion
+
+            ConfigRequest request = new ConfigRequest("teste");
+
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
         [Test][Parallelizable]
         public void BuscaVariosConfig()
         {

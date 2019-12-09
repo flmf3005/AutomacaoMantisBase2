@@ -153,10 +153,12 @@
     <Compile Include="Requests\ProjetosPatchRequest.cs" />
     <Compile Include="Requests\ProjetosPostRequest.cs" />
     <Compile Include="Requests\ProjetosDeleteRequest.cs" />
+    <Compile Include="Requests\SubProjetosRequest.cs" />
     <Compile Include="Requests\TarefasDeleteRequest.cs" />
     <Compile Include="Requests\TarefasPatchRequest.cs" />
     <Compile Include="Requests\AnexosPostRequest.cs" />
     <Compile Include="Requests\TarefasPostRequest.cs" />
+    <Compile Include="Requests\VersaoRequest.cs" />
     <Compile Include="Requests\UsuariosRequest.cs" />
     <Compile Include="Requests\FiltrosRequest.cs" />
     <Compile Include="Requests\TarefasGetRequest.cs" />
@@ -176,10 +178,11 @@
     <None Include="Jsons\NotasTimeAnexo.json" />
     <None Include="Jsons\NotasTime.json" />
     <None Include="Jsons\Notas.json" />
-    <None Include="Jsons\AlteraProjeto.json" />
+    <None Include="Jsons\SubProjetos.json" />
     <None Include="Jsons\Projetos.json" />
     <None Include="Jsons\Tarefas.json" />
     <None Include="Jsons\Anexos.json" />
+    <None Include="Jsons\Versao.json" />
     <None Include="Jsons\Usuario.json" />
     <None Include="packages.config" />
   </ItemGroup>

@@ -71,9 +71,9 @@ namespace AutomacaoAPIMantisBase2.Queries {
         ///DELETE FROM `mantis_custom_field_table`;
         ///DELETE FROM `mantis_filters_table`  WHERE id &lt;&gt; 1;
         ///DELETE FROM `mantis_project_table`;
+        ///DELETE FROM `mantis_project_version_table`;
         ///DELETE FROM `mantis_tag_table`;
-        ///DELETE FROM `mantis_user_table` WHERE username &lt;&gt; &apos;administrator&apos;;
-        ///INSERT INTO [rest of string was truncated]&quot;;.
+        ///DELETE FROM `mantis_user_table` WH [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InicializaTestes {
             get {

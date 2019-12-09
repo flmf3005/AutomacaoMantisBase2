@@ -128,6 +128,7 @@ DELETE FROM `mantis_bug_table`;
 DELETE FROM `mantis_custom_field_table`;
 DELETE FROM `mantis_filters_table`  WHERE id &lt;&gt; 1;
 DELETE FROM `mantis_project_table`;
+DELETE FROM `mantis_project_version_table`;
 DELETE FROM `mantis_tag_table`;
 DELETE FROM `mantis_user_table` WHERE username &lt;&gt; 'administrator';
 INSERT INTO `mantis_project_table` (`id`, `name`, `status`, `enabled`, `view_state`, `access_min`, `file_path`, `description`, `category_id`, `inherit_global`) 

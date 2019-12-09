@@ -164,6 +164,27 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
+        [Test]
+        [Parallelizable]
+        public void AdicionaVersaoProjeto()
+        {
+            #region Parameters
+            string versao = "2.0";
+            string statusCodeEsperado = "NoContent";
+            //Resultado esperado
+            #endregion
+
+            VersaoRequest request = new VersaoRequest(1);
+            request.setJsonBody(versao);
+
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
         public static List<TestCaseData> ListarProjetos
         {
             get
