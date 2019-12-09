@@ -1,0 +1,17 @@
+{
+  "id": 1,
+  "name": "$name",
+  "status": {
+    "id": 10,
+    "name": "development",
+    "label": "development"
+  },
+  "description": "$descricao",
+  "enabled": true,
+  "file_path": "/tmp/",
+  "view_state": {
+    "id": 10,
+    "name": "public",
+    "label": "public"
+  }
+}

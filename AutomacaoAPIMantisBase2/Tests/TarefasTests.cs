@@ -51,6 +51,27 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
+        [Test]
+        [Parallelizable]
+        public void BuscaTarefaInexistente()
+        {
+            #region Parameters
+            string statusCodeEsperado = "NotFound";
+
+            //Resultado esperado
+
+            #endregion
+
+            TarefasGetRequest request = new TarefasGetRequest("9999999");
+
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
         [Test][Parallelizable]
         public void BuscaTarefasPorFiltroID()
         {
@@ -403,6 +424,24 @@ namespace AutomacaoAPIMantisBase2.Tests
 
         [Test]
         [Parallelizable]
+        public void DeletaNotaInexistente()
+        {
+            #region Parameters
+            //Resultado esperado
+            string statusCodeEsperado = "NotFound";
+            #endregion
+
+            NotasDeleteRequest request = new NotasDeleteRequest("1", "2");
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
+        [Test]
+        [Parallelizable]
         public void InsereNotaComTimeTrackingEmTarefa()
         {
             #region Parameters
@@ -459,6 +498,62 @@ namespace AutomacaoAPIMantisBase2.Tests
 
             NotasPostRequest request = new NotasPostRequest("1");
             request.setJsonBody(textoNota, nameState);
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
+        [Test]
+        [Parallelizable]
+        public void MonitoraTarefa()
+        {
+            #region Parameters
+            //Resultado esperado
+            string statusCodeEsperado = "Created";
+            #endregion
+
+            MonitorPostRequest request = new MonitorPostRequest("1");
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
+        [Test]
+        [Parallelizable]
+        public void MonitoraTarefaUsuarioEspecifico()
+        {
+            #region Parameters
+            //Resultado esperado
+            string statusCodeEsperado = "Created";
+            #endregion
+
+            MonitorPostRequest request = new MonitorPostRequest("1");
+            request.setJsonBody("administrator");
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
+        [Test]
+        [Parallelizable]
+        public void MonitoraTarefaUsuarioInexistente()
+        {
+            #region Parameters
+            //Resultado esperado
+            string statusCodeEsperado = "NotFound";
+            #endregion
+
+            MonitorPostRequest request = new MonitorPostRequest("1");
+            request.setJsonBody("fernando.ferreira");
             IRestResponse<dynamic> response = request.ExecuteRequest();
 
             Assert.Multiple(() =>

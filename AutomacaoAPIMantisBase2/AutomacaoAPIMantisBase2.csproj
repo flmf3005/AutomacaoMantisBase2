@@ -144,11 +144,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Requests\MonitorPostRequest.cs" />
     <Compile Include="Requests\NotasPostRequest.cs" />
     <Compile Include="Requests\LangRequest.cs" />
     <Compile Include="Requests\ConfigRequest.cs" />
     <Compile Include="Requests\ArquivosTarefasGetRequest.cs" />
     <Compile Include="Requests\NotasDeleteRequest.cs" />
+    <Compile Include="Requests\ProjetosPatchRequest.cs" />
+    <Compile Include="Requests\ProjetosPostRequest.cs" />
+    <Compile Include="Requests\ProjetosDeleteRequest.cs" />
     <Compile Include="Requests\TarefasDeleteRequest.cs" />
     <Compile Include="Requests\TarefasPatchRequest.cs" />
     <Compile Include="Requests\AnexosPostRequest.cs" />
@@ -168,9 +172,12 @@
     <None Include="app.config" />
     <None Include="Jsons\AlterarTarefa.json" />
     <None Include="Jsons\AdicionaAnexos.json" />
+    <None Include="Jsons\Monitors.json" />
     <None Include="Jsons\NotasTimeAnexo.json" />
     <None Include="Jsons\NotasTime.json" />
     <None Include="Jsons\Notas.json" />
+    <None Include="Jsons\AlteraProjeto.json" />
+    <None Include="Jsons\Projetos.json" />
     <None Include="Jsons\Tarefas.json" />
     <None Include="Jsons\Anexos.json" />
     <None Include="Jsons\Usuario.json" />
