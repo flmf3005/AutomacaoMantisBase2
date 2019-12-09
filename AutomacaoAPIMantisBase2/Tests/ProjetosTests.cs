@@ -95,6 +95,7 @@ namespace AutomacaoAPIMantisBase2.Tests
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
                 Assert.IsTrue(response.Content.Contains(nome));
                 Assert.IsTrue(response.Content.Contains(descricao));
+                StringAssert.IsMatch("(\\d+)", response.Data["project"]["id"].ToString());
             });
         }
 
