@@ -6,13 +6,13 @@ using System.Text;
 
 namespace AutomacaoAPIMantisBase2.Requests
 {
-    public class TarefasPostRequest : RequestBase
+    public class AnexosPostRequest : RequestBase
     {
         string files = string.Empty;
 
-        public TarefasPostRequest()
+        public AnexosPostRequest(string id)
         {
-            requestService = "/api/rest/issues/";
+            requestService = "/api/rest/issues/" + id + "/files";
             method = Method.POST;
             httpBasicAuthenticator = true;
         }
@@ -28,14 +28,14 @@ namespace AutomacaoAPIMantisBase2.Requests
             {
                 files = files + ",\r\n";
                 files = File.ReadAllText(GeneralHelpers.ReturnProjectPath() + "Jsons/Anexos.json", Encoding.UTF8);
-                files = files.Replace("$name", nome).Replace("$content", System.Convert.ToBase64String(Encoding.UTF8.GetBytes(conteudo)));
+                files = files.Replace("$name", nome).Replace("$content", conteudo);
             }
         }
 
-        public void setJsonBody(string summary, string description, string category, string project)
+        public void setJsonBody()
         {
-            jsonBody = File.ReadAllText(GeneralHelpers.ReturnProjectPath() + "Jsons/Tarefas.json", Encoding.UTF8);
-            jsonBody = jsonBody.Replace("$summary", summary).Replace("$description", description).Replace("$category", category).Replace("$project", project).Replace("$files", files);
+            jsonBody = File.ReadAllText(GeneralHelpers.ReturnProjectPath() + "Jsons/AdicionaAnexos.json", Encoding.UTF8);
+            jsonBody = jsonBody.Replace("$files", files);
         }
     }
 }

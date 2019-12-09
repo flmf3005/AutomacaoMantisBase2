@@ -62,6 +62,8 @@ namespace AutomacaoAPIMantisBase2.Queries {
         
         /// <summary>
         ///   Looks up a localized string similar to DELETE FROM `mantis_api_token_table` ;
+        ///DELETE FROM `mantis_bugnote_table`;
+        ///DELETE FROM `mantis_bugnote_text_table`;
         ///DELETE FROM `mantis_bug_history_table`;
         ///DELETE FROM `mantis_bug_file_table`;
         ///DELETE FROM `mantis_bug_text_table`;
@@ -71,7 +73,7 @@ namespace AutomacaoAPIMantisBase2.Queries {
         ///DELETE FROM `mantis_project_table`;
         ///DELETE FROM `mantis_tag_table`;
         ///DELETE FROM `mantis_user_table` WHERE username &lt;&gt; &apos;administrator&apos;;
-        ///INSERT INTO `mantis_project_table` (`id`, `name`, `status`, `enabled`, `view_state`, `acce [rest of string was truncated]&quot;;.
+        ///INSERT INTO [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InicializaTestes {
             get {

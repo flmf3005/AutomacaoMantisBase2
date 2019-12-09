@@ -119,6 +119,8 @@
   </resheader>
   <data name="InicializaTestes" xml:space="preserve">
     <value>DELETE FROM `mantis_api_token_table` ;
+DELETE FROM `mantis_bugnote_table`;
+DELETE FROM `mantis_bugnote_text_table`;
 DELETE FROM `mantis_bug_history_table`;
 DELETE FROM `mantis_bug_file_table`;
 DELETE FROM `mantis_bug_text_table`;
@@ -133,8 +135,12 @@ VALUES (1, 'Projeto Inicial', 10, 1, 10, 10, '', '', 1, 1);
 INSERT INTO `mantis_api_token_table` (`id`, `user_id`, `name`, `hash`, `date_created`, `date_used`) 
 VALUES (1, 1, 'admin_token', '4b45cf63ca6c7a97c596d5525ece7b7ff998f74a37cdc4d74d0ecde008ada323', 1573652861, 1);
 INSERT INTO `mantis_bug_text_table` (`id`, `description`, `steps_to_reproduce`, `additional_information`) VALUES (1, 'Tarefa Teste', '', '');
+INSERT INTO `mantis_bug_text_table` (`id`, `description`, `steps_to_reproduce`, `additional_information`) VALUES (2, 'Tarefa Teste - Excluir', '', '');
 INSERT INTO `mantis_bug_table` (`id`, `project_id`, `reporter_id`, `handler_id`, `duplicate_id`, `priority`, `severity`, `reproducibility`, `status`, `resolution`, `projection`, `eta`, `bug_text_id`, `os`, `os_build`, `platform`, `version`, `fixed_in_version`, `build`, `profile_id`, `view_state`, `summary`, `sponsorship_total`, `sticky`, `target_version`, `category_id`, `date_submitted`, `due_date`, `last_updated`) VALUES (1, 1, 1, 0, 0, 30, 50, 70, 10, 10, 10, 10, 1, '', '', '', '', '', '', 0, 10, 'Tarefa Teste', 0, 0, '', 1, 1573755949, 1, 1573755949);
+INSERT INTO `mantis_bug_table` (`id`, `project_id`, `reporter_id`, `handler_id`, `duplicate_id`, `priority`, `severity`, `reproducibility`, `status`, `resolution`, `projection`, `eta`, `bug_text_id`, `os`, `os_build`, `platform`, `version`, `fixed_in_version`, `build`, `profile_id`, `view_state`, `summary`, `sponsorship_total`, `sticky`, `target_version`, `category_id`, `date_submitted`, `due_date`, `last_updated`) VALUES (2, 1, 1, 0, 0, 30, 50, 70, 10, 10, 10, 10, 2, '', '', '', '', '', '', 0, 10, 'Tarefa Teste - Excluir', 0, 0, '', 1, 1573755949, 1, 1573755949);
 INSERT INTO `mantis_bug_file_table` (`id`, `bug_id`, `title`, `description`, `diskfile`, `filename`, `folder`, `filesize`, `file_type`, `content`, `date_added`, `user_id`) VALUES (1, 1, '', '', '0c3924d7072a2669b95cd55fd90baa47', 'anexo.txt', '', 1, 'application/octet-stream; charset=binary', '.', 1573756849, 1);
+INSERT INTO `mantis_bugnote_table` (`id`, `bug_id`, `reporter_id`, `bugnote_text_id`, `view_state`, `note_type`, `note_attr`, `time_tracking`, `last_modified`, `date_submitted`) VALUES (1, 1, 1, 1, 10, 0, '', 0, 1575910065, 1575910065);
+INSERT INTO `mantis_bugnote_text_table` (`id`, `note`) VALUES (1, 'Nota teste incluida na tarefa 1');
 INSERT INTO `mantis_filters_table` (`id`, `user_id`, `project_id`, `is_public`, `name`, `filter_string`) VALUES (2, 1, 0, 0, 'filter1', 'v9#{"_version":"v9","_view_type":"simple","category_id":["0"],"severity":[0],"status":[0],"highlight_changed":6,"reporter_id":[0],"handler_id":[0],"project_id":[-3],"resolution":[0],"build":["0"],"version":["0"],"hide_status":[90],"monitor_user_id":[0],"sort":"last_updated","dir":"DESC","per_page":50,"match_type":0,"platform":["0"],"os":["0"],"os_build":["0"],"fixed_in_version":["0"],"target_version":["0"],"profile_id":[0],"priority":[0],"note_user_id":[0],"sticky":true,"filter_by_date":false,"start_month":"11","end_month":"11","start_day":1,"end_day":"14","start_year":"2019","end_year":"2019","filter_by_last_updated_date":false,"last_updated_start_month":"11","last_updated_end_month":"11","last_updated_start_day":1,"last_updated_end_day":"14","last_updated_start_year":"2019","last_updated_end_year":"2019","search":"","view_state":0,"tag_string":"","tag_select":0,"relationship_type":-1,"relationship_bug":0,"custom_fields":[]}');</value>
   </data>
 </root>

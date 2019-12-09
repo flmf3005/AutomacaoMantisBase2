@@ -278,6 +278,195 @@ namespace AutomacaoAPIMantisBase2.Tests
             });
         }
 
+        [Test]
+        [Parallelizable]
+        public void AlteraTarefa()
+        {
+            #region Parameters
+            string dadosTarefa = "Tarefa Teste";
+            string status = "assigned";
+            //Resultado esperado
+            string statusCodeEsperado = "OK";
+            #endregion
+
+            TarefasPatchRequest request = new TarefasPatchRequest("1");
+            request.setJsonBody(status);
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.IsTrue(response.Content.Contains(dadosTarefa));
+                Assert.IsTrue(response.Content.Contains(status));
+            });
+        }
+
+        [Test]
+        [Parallelizable]
+        public void DeletaTarefa()
+        {
+            #region Parameters
+            //Resultado esperado
+            string statusCodeEsperado = "NoContent";
+            #endregion
+
+            TarefasDeleteRequest request = new TarefasDeleteRequest("2");
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());                
+            });
+        }
+
+        [Test]
+        [Parallelizable]
+        public void InsereAnexoEmTarefa()
+        {
+            #region Parameters
+            string nomeAnexo = "Anexo.txt";
+            string conteudoAnexo = "Anexo Teste";
+            //Resultado esperado
+            string statusCodeEsperado = "Created";
+            #endregion
+
+            AnexosPostRequest request = new AnexosPostRequest("1");
+            request.adicionaAnexo(nomeAnexo, conteudoAnexo);
+            request.setJsonBody();
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
+        [Test]
+        [Parallelizable]
+        [TestCaseSource("ListarAnexos")]
+        public void InsereAnexoEmTarefaDDT(string nomeAnexo, string conteudoAnexo)
+        {
+            #region Parameters
+            //Resultado esperado
+            string statusCodeEsperado = "Created";
+            #endregion
+
+            AnexosPostRequest request = new AnexosPostRequest("1");
+            request.adicionaAnexo(nomeAnexo, conteudoAnexo);
+            request.setJsonBody();
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
+        [Test]
+        [Parallelizable]
+        public void InsereNotaEmTarefa()
+        {
+            #region Parameters
+            string textoNota = "Nota teste incluida na tarefa 1";
+            string nameState = "public";
+            //Resultado esperado
+            string statusCodeEsperado = "Created";
+            #endregion
+
+            NotasPostRequest request = new NotasPostRequest("1");
+            request.setJsonBody(textoNota, nameState);
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
+        [Test]
+        [Parallelizable]
+        public void DeletaNota()
+        {
+            #region Parameters
+            //Resultado esperado
+            string statusCodeEsperado = "OK";
+            #endregion
+
+            NotasDeleteRequest request = new NotasDeleteRequest("1", "1");
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
+        [Test]
+        [Parallelizable]
+        public void InsereNotaComTimeTrackingEmTarefa()
+        {
+            #region Parameters
+            string textoNota = "Nota teste incluida na tarefa 1";
+            string nameState = "public";
+            string time = "00:15";
+            //Resultado esperado
+            string statusCodeEsperado = "Created";
+            #endregion
+
+            NotasPostRequest request = new NotasPostRequest("1");
+            request.setJsonBodyWithTimeTracking(textoNota, nameState, time);
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
+        [Test]
+        [Parallelizable]
+        public void InsereNotaComTimeTrackingEAnexoEmTarefa()
+        {
+            #region Parameters
+            string textoNota = "Nota teste incluida na tarefa 1";
+            string nameState = "public";
+            string time = "00:15";
+            string nomeAnexo = "Anexo.txt";
+            string conteudoAnexo = "Anexo Teste";
+            //Resultado esperado
+            string statusCodeEsperado = "Created";
+            #endregion
+
+            NotasPostRequest request = new NotasPostRequest("1");
+            request.setJsonBodyWithTimeTrackingAndAttachment(textoNota, nameState, time, nomeAnexo, conteudoAnexo);
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
+        [Test]
+        [Parallelizable]
+        [TestCaseSource("ListarNotas")]
+        public void InsereNotaEmTarefaDDT(string textoNota, string nameState)
+        {
+            #region Parameters
+            //Resultado esperado
+            string statusCodeEsperado = "Created";
+            #endregion
+
+            NotasPostRequest request = new NotasPostRequest("1");
+            request.setJsonBody(textoNota, nameState);
+            IRestResponse<dynamic> response = request.ExecuteRequest();
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+            });
+        }
+
         public static List<TestCaseData> ListarTarefas
         {
             get
@@ -301,6 +490,70 @@ namespace AutomacaoAPIMantisBase2.Tests
                             if (!resumo.Equals("Resumo"))
                             {
                                 var testCase = new TestCaseData(resumo, descricao);
+                                testCases.Add(testCase);
+                            }
+                        }
+                    }
+                }
+                return testCases;
+            }
+        }
+
+        public static List<TestCaseData> ListarAnexos
+        {
+            get
+            {
+                var testCases = new List<TestCaseData>();
+                string[] split = { "" };
+                using (var fs = File.OpenRead(String.Concat(GeneralHelpers.GetPastaArquivos(), "\\Anexos.csv")))
+                using (var sr = new StreamReader(fs))
+                {
+                    string line = string.Empty;
+
+                    while (line != null)
+                    {
+                        line = sr.ReadLine();
+                        if (line != null)
+                        {
+                            split = line.Split(new char[] { ';' }, StringSplitOptions.None);
+                            string nome = split[0].Trim();
+                            string texto = split[1].Trim();
+
+                            if (!nome.Equals("Nome"))
+                            {
+                                var testCase = new TestCaseData(nome, texto);
+                                testCases.Add(testCase);
+                            }
+                        }
+                    }
+                }
+                return testCases;
+            }
+        }
+
+        public static List<TestCaseData> ListarNotas
+        {
+            get
+            {
+                var testCases = new List<TestCaseData>();
+                string[] split = { "" };
+                using (var fs = File.OpenRead(String.Concat(GeneralHelpers.GetPastaArquivos(), "\\Notas.csv")))
+                using (var sr = new StreamReader(fs))
+                {
+                    string line = string.Empty;
+
+                    while (line != null)
+                    {
+                        line = sr.ReadLine();
+                        if (line != null)
+                        {
+                            split = line.Split(new char[] { ';' }, StringSplitOptions.None);
+                            string texto = split[0].Trim();
+                            string state = split[1].Trim();
+
+                            if (!texto.Equals("Texto"))
+                            {
+                                var testCase = new TestCaseData(texto, state);
                                 testCases.Add(testCase);
                             }
                         }

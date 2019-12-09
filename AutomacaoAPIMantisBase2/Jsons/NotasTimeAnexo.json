@@ -1,0 +1,15 @@
+{
+  "text": "$text",
+  "view_state": {
+    "name": "$name"
+  },
+  "time_tracking": {
+    "duration": "$time"
+  },
+  "files": [
+    {
+      "name": "$attach",
+      "content": "$content"
+    }
+  ]
+}
