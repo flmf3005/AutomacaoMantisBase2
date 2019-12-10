@@ -8,14 +8,15 @@ namespace AutomacaoAPIMantisBase2.Tests
 {
     public class FiltrosTests : TestBase
     {
-        [Test][Parallelizable]
+        [Test]
+        [Parallelizable]
         public void BuscaTodosOsFiltros()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
+            string idFiltro = "2";
+            string nameFiltro = "filter1";
             #endregion
 
             FiltrosRequest request = new FiltrosRequest();
@@ -26,20 +27,23 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idFiltro, response.Data["filters"][0]["id"].ToString());
+                Assert.AreEqual(nameFiltro, response.Data["filters"][0]["name"].ToString());
             });
         }
 
-        [Test][Parallelizable]
+        [Test]
+        [Parallelizable]
         public void BuscaFiltroEspecifico()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
+            string idFiltro = "2";
+            string nameFiltro = "filter1";
             #endregion
 
-            FiltrosRequest request = new FiltrosRequest(1, Method.GET);
+            FiltrosRequest request = new FiltrosRequest(int.Parse(idFiltro), Method.GET);
             request.setJsonBody();
 
             IRestResponse<dynamic> response = request.ExecuteRequest();
@@ -47,6 +51,8 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idFiltro, response.Data["filters"][0]["id"].ToString());
+                Assert.AreEqual(nameFiltro, response.Data["filters"][0]["name"].ToString());
             });
         }
 
@@ -55,10 +61,8 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaFiltroInexistente()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
             #endregion
 
             FiltrosRequest request = new FiltrosRequest(999, Method.GET);
@@ -69,10 +73,12 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual("[]", response.Data["filters"].ToString());
             });
         }
 
-        [Test][Parallelizable]
+        [Test]
+        [Parallelizable]
         public void DeletaFiltroEspecifico()
         {
             #region Parameters
