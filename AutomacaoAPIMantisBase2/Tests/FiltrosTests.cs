@@ -82,10 +82,8 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void DeletaFiltroEspecifico()
         {
             #region Parameters
-            string statusCodeEsperado = "NoContent";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "NoContent";
             #endregion
 
             FiltrosRequest request = new FiltrosRequest(2, Method.DELETE);
@@ -104,10 +102,8 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void DeletaFiltroInexistente()
         {
             #region Parameters
-            string statusCodeEsperado = "NotFound";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "NotFound";
             #endregion
 
             FiltrosRequest request = new FiltrosRequest(999, Method.DELETE);

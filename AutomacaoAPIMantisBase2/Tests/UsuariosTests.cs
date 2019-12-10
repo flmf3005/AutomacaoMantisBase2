@@ -7,14 +7,15 @@ namespace AutomacaoAPIMantisBase2.Tests
 {
     public class UsuariosTests : TestBase
     {
-        [Test][Parallelizable]
+        [Test]
+        [Parallelizable]
         public void BuscaDadosUsuarioAtual()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
+            string idUsuario = "1";
+            string nameUsuario = "administrator";
             #endregion
 
             UsuariosRequest request = new UsuariosRequest();
@@ -24,38 +25,46 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idUsuario, response.Data["id"].ToString());
+                Assert.AreEqual(nameUsuario, response.Data["name"].ToString());
             });
         }
 
-        [Test][Parallelizable]
+        [Test]
+        [Parallelizable]
         public void InsereNovoUsuario()
         {
             #region Parameters
-            string statusCodeEsperado = "Created";
-
+            string usuario = "usertest";
+            string senha = "usertest";
+            string nome = "Usuario Teste";
+            string email = "user@gmail.com";
             //Resultado esperado
-
+            string statusCodeEsperado = "Created";
             #endregion
 
             UsuariosRequest request = new UsuariosRequest(Method.POST);
-            request.setJsonBody("usertest", "usertest", "Usuario Teste", "user@gmail.com");
+            request.setJsonBody(usuario, senha, nome, email);
 
             IRestResponse<dynamic> response = request.ExecuteRequest();
 
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(usuario, response.Data["user"]["name"].ToString());
+                Assert.AreEqual(nome, response.Data["user"]["real_name"].ToString());
+                Assert.AreEqual(email, response.Data["user"]["email"].ToString());
             });
         }
 
-        [Test][Parallelizable]
+        [Test]
+        [Parallelizable]
         public void DeletaUsuario()
         {
-            #region Parameters
-            string statusCodeEsperado = "NoContent";
+            #region Parameters         
             string idUser = null;
             //Resultado esperado
-
+            string statusCodeEsperado = "NoContent";
             #endregion
 
             UsuariosRequest request = new UsuariosRequest(Method.POST);
@@ -80,19 +89,19 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void DeletaUsuarioInexistente()
         {
             #region Parameters
-            string statusCodeEsperado = "NotFound";
             string idUser = "999";
             //Resultado esperado
-
+            string statusCodeEsperado = "NotFound";
             #endregion
 
             UsuariosRequest request = new UsuariosRequest(Method.DELETE);
             request.setUserId(idUser);
-            IRestResponse response = request.ExecuteRequest();
+            IRestResponse<dynamic> response = request.ExecuteRequest();
 
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual("User id \'" + idUser + "\' not found.", response.Data["message"].ToString());
             });
         }
     }
