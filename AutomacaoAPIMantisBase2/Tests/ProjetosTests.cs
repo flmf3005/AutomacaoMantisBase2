@@ -15,10 +15,10 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaTodosOsProjetos()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
+            string idProjeto = "1";
+            string nameProjeto = "Projeto Inicial";
             #endregion
 
             ProjetosRequest request = new ProjetosRequest();
@@ -29,6 +29,8 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idProjeto, response.Data["projects"][0]["id"].ToString());
+                Assert.AreEqual(nameProjeto, response.Data["projects"][0]["name"].ToString());
             });
         }
 
@@ -36,13 +38,13 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaProjetoEspecifico()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
+            int idProjeto = 1;
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
+            string nameProjeto = "Projeto Inicial";
             #endregion
 
-            ProjetosRequest request = new ProjetosRequest(1);
+            ProjetosRequest request = new ProjetosRequest(idProjeto);
             request.setJsonBody();
 
             IRestResponse<dynamic> response = request.ExecuteRequest();
@@ -50,6 +52,8 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idProjeto.ToString(), response.Data["projects"][0]["id"].ToString());
+                Assert.AreEqual(nameProjeto, response.Data["projects"][0]["name"].ToString());
             });
         }
 
@@ -58,13 +62,12 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaProjetoInexistente()
         {
             #region Parameters
-            string statusCodeEsperado = "NotFound";
-
+            int idProjeto = 999;
             //Resultado esperado
-
+            string statusCodeEsperado = "NotFound";
             #endregion
 
-            ProjetosRequest request = new ProjetosRequest(99999);
+            ProjetosRequest request = new ProjetosRequest(idProjeto);
             request.setJsonBody();
 
             IRestResponse<dynamic> response = request.ExecuteRequest();
@@ -72,6 +75,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual("Project #" + idProjeto.ToString() + " not found", response.Data["message"].ToString());
             });
         }
 
@@ -93,8 +97,8 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
-                Assert.IsTrue(response.Content.Contains(nome));
-                Assert.IsTrue(response.Content.Contains(descricao));
+                Assert.AreEqual(nome, response.Data["project"]["name"].ToString());
+                Assert.AreEqual(descricao, response.Data["project"]["description"].ToString());
                 StringAssert.IsMatch("(\\d+)", response.Data["project"]["id"].ToString());
             });
         }
@@ -116,8 +120,8 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
-                Assert.IsTrue(response.Content.Contains(nome));
-                Assert.IsTrue(response.Content.Contains(descricao));
+                Assert.AreEqual(nome, response.Data["project"]["name"].ToString());
+                Assert.AreEqual(descricao, response.Data["project"]["description"].ToString());
             });
         }
 
@@ -126,10 +130,8 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void DeletaProjeto()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
             #endregion
 
             ProjetosDeleteRequest request = new ProjetosDeleteRequest(2);
@@ -148,10 +150,8 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void DeletaProjetoInexistente()
         {
             #region Parameters
-            string statusCodeEsperado = "Forbidden";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "Forbidden";
             #endregion
 
             ProjetosDeleteRequest request = new ProjetosDeleteRequest(999);
@@ -171,8 +171,8 @@ namespace AutomacaoAPIMantisBase2.Tests
         {
             #region Parameters
             string versao = "2.0";
-            string statusCodeEsperado = "NoContent";
             //Resultado esperado
+            string statusCodeEsperado = "NoContent";
             #endregion
 
             VersaoRequest request = new VersaoRequest(1);
