@@ -15,10 +15,11 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaTodasAsTarefas()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
+            string idTarefa = "1";
+            string summary = "Tarefa Teste";
+            string description = "Tarefa Teste";
             #endregion
 
             TarefasGetRequest request = new TarefasGetRequest();
@@ -28,6 +29,9 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idTarefa, response.Data["issues"][0]["id"].ToString());
+                Assert.AreEqual(summary, response.Data["issues"][0]["summary"].ToString());
+                Assert.AreEqual(description, response.Data["issues"][0]["description"].ToString());
             });
         }
 
@@ -35,19 +39,23 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaTarefaEspecifica()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
+            string idTarefa = "1";
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
+            string summary = "Tarefa Teste";
+            string description = "Tarefa Teste";
             #endregion
 
-            TarefasGetRequest request = new TarefasGetRequest("1");
+            TarefasGetRequest request = new TarefasGetRequest(idTarefa);
 
             IRestResponse<dynamic> response = request.ExecuteRequest();
 
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idTarefa, response.Data["issues"][0]["id"].ToString());
+                Assert.AreEqual(summary, response.Data["issues"][0]["summary"].ToString());
+                Assert.AreEqual(description, response.Data["issues"][0]["description"].ToString());
             });
         }
 
@@ -56,19 +64,19 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaTarefaInexistente()
         {
             #region Parameters
-            string statusCodeEsperado = "NotFound";
-
+            string idTarefa = "999999";
             //Resultado esperado
-
+            string statusCodeEsperado = "NotFound";
             #endregion
 
-            TarefasGetRequest request = new TarefasGetRequest("9999999");
+            TarefasGetRequest request = new TarefasGetRequest(idTarefa);
 
             IRestResponse<dynamic> response = request.ExecuteRequest();
 
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual("Issue #" + idTarefa + " not found", response.Data["message"].ToString());
             });
         }
 
@@ -76,10 +84,8 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaTarefasPorFiltroID()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
             #endregion
 
             TarefasGetRequest request = new TarefasGetRequest("1", true);
@@ -96,10 +102,8 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaTarefasAtribuidasUsuarioToken()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
             #endregion
 
             TarefasGetRequest request = new TarefasGetRequest("assigned", true);
@@ -196,10 +200,10 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaTodosArquivosDeTarefa()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
+            string idAnexo = "1";
+            string nomeAnexo = "anexo.txt";
             #endregion
 
             ArquivosTarefasGetRequest request = new ArquivosTarefasGetRequest(1);
@@ -209,6 +213,8 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idAnexo, response.Data["files"][0]["id"].ToString());
+                Assert.AreEqual(nomeAnexo, response.Data["files"][0]["filename"].ToString());
             });
         }
 
@@ -216,10 +222,10 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaUnicoArquivoDeTarefa()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
+            string idAnexo = "1";
+            string nomeAnexo = "anexo.txt";
             #endregion
 
             ArquivosTarefasGetRequest request = new ArquivosTarefasGetRequest(1, 1);
@@ -229,6 +235,8 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(idAnexo, response.Data["files"][0]["id"].ToString());
+                Assert.AreEqual(nomeAnexo, response.Data["files"][0]["filename"].ToString());
             });
         }
 
@@ -248,7 +256,9 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
-                Assert.IsTrue(response.Content.Contains(dadosTarefa));
+                Assert.AreEqual(dadosTarefa, response.Data["issue"]["summary"].ToString());
+                Assert.AreEqual(dadosTarefa, response.Data["issue"]["description"].ToString());
+                StringAssert.IsMatch("(\\d+)", response.Data["issue"]["id"].ToString());
             });
         }
 
@@ -269,8 +279,8 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
-                Assert.IsTrue(response.Content.Contains(resumo));
-                Assert.IsTrue(response.Content.Contains(descricao));
+                Assert.AreEqual(resumo, response.Data["issue"]["summary"].ToString());
+                Assert.AreEqual(descricao, response.Data["issue"]["description"].ToString());
             });
         }
 
@@ -294,7 +304,9 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
-                Assert.IsTrue(response.Content.Contains(dadosTarefa));
+                Assert.AreEqual(dadosTarefa, response.Data["issue"]["summary"].ToString());
+                Assert.AreEqual(dadosTarefa, response.Data["issue"]["description"].ToString());
+                Assert.AreEqual(nomeAnexo, response.Data["issue"]["attachments"][0]["filename"].ToString());
                 Assert.IsTrue(response.Content.Contains(nomeAnexo));
             });
         }
@@ -304,21 +316,24 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void AlteraTarefa()
         {
             #region Parameters
+            string idTarefa = "1";
             string dadosTarefa = "Tarefa Teste";
             string status = "assigned";
             //Resultado esperado
             string statusCodeEsperado = "OK";
             #endregion
 
-            TarefasPatchRequest request = new TarefasPatchRequest("1");
+            TarefasPatchRequest request = new TarefasPatchRequest(idTarefa);
             request.setJsonBody(status);
             IRestResponse<dynamic> response = request.ExecuteRequest();
 
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
-                Assert.IsTrue(response.Content.Contains(dadosTarefa));
-                Assert.IsTrue(response.Content.Contains(status));
+                Assert.AreEqual(idTarefa, response.Data["issues"][0]["id"].ToString());
+                Assert.AreEqual(dadosTarefa, response.Data["issues"][0]["summary"].ToString());
+                Assert.AreEqual(dadosTarefa, response.Data["issues"][0]["description"].ToString());
+                Assert.AreEqual(status, response.Data["issues"][0]["status"]["name"].ToString());
             });
         }
 
@@ -401,6 +416,8 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(textoNota, response.Data["note"]["text"].ToString());
+                Assert.AreEqual(nameState, response.Data["note"]["view_state"]["name"].ToString());
             });
         }
 
@@ -427,16 +444,18 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void DeletaNotaInexistente()
         {
             #region Parameters
+            string idNote = "9999";
             //Resultado esperado
             string statusCodeEsperado = "NotFound";
             #endregion
 
-            NotasDeleteRequest request = new NotasDeleteRequest("1", "2");
+            NotasDeleteRequest request = new NotasDeleteRequest("1", idNote);
             IRestResponse<dynamic> response = request.ExecuteRequest();
 
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual("Issue note #" + idNote + " not found", response.Data["message"].ToString());
             });
         }
 
@@ -459,6 +478,8 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(textoNota, response.Data["note"]["text"].ToString());
+                Assert.AreEqual(nameState, response.Data["note"]["view_state"]["name"].ToString());
             });
         }
 
@@ -483,6 +504,8 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(textoNota, response.Data["note"]["text"].ToString());
+                Assert.AreEqual(nameState, response.Data["note"]["view_state"]["name"].ToString());
             });
         }
 
@@ -503,6 +526,8 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(textoNota, response.Data["note"]["text"].ToString());
+                Assert.AreEqual(nameState, response.Data["note"]["view_state"]["name"].ToString());
             });
         }
 
@@ -513,6 +538,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             #region Parameters
             //Resultado esperado
             string statusCodeEsperado = "Created";
+            string usuario = "administrator";
             #endregion
 
             MonitorPostRequest request = new MonitorPostRequest("1");
@@ -521,6 +547,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(usuario, response.Data["issues"][0]["monitors"][0]["name"].ToString());
             });
         }
 
@@ -529,17 +556,19 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void MonitoraTarefaUsuarioEspecifico()
         {
             #region Parameters
+            string usuario = "administrator";
             //Resultado esperado
             string statusCodeEsperado = "Created";
             #endregion
 
             MonitorPostRequest request = new MonitorPostRequest("1");
-            request.setJsonBody("administrator");
+            request.setJsonBody(usuario);
             IRestResponse<dynamic> response = request.ExecuteRequest();
 
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(usuario, response.Data["issues"][0]["monitors"][0]["name"].ToString());
             });
         }
 
@@ -548,17 +577,19 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void MonitoraTarefaUsuarioInexistente()
         {
             #region Parameters
+            string usuario = "teste";
             //Resultado esperado
             string statusCodeEsperado = "NotFound";
             #endregion
 
             MonitorPostRequest request = new MonitorPostRequest("1");
-            request.setJsonBody("fernando.ferreira");
+            request.setJsonBody(usuario);
             IRestResponse<dynamic> response = request.ExecuteRequest();
 
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual("Username \'" + usuario + "\' not found", response.Data["message"].ToString());
             });
         }
 
