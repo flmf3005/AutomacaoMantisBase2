@@ -116,11 +116,11 @@ As configurações de tamanho, dimensionamento e outros argumentos por browser e
 ## Projeto Web
 
 -  **1. 50 Scripts:** Foram criados 50 scripts de testes funcionais, utilizando PageObjects para validar as funcionalidades presentes no sistema Mantis, que podem ser vistas nas classes:
-- CriarTarefasTestes
-- GerenciarTestes
-- HomeTestes
-- LoginTestes
-- VerTarefasTestes
+-- CriarTarefasTestes
+-- GerenciarTestes
+-- HomeTestes
+-- LoginTestes
+-- VerTarefasTestes
 
 -  **2. Data Driven Testing:** Foi implementado um testes para a exemplificação do uso do recurso DataDriven Testing (DDT). 
 É possível verificar ao acessar a classe `CriarTarefasTests.cs` com o método `criarTarefasDDT`.
@@ -140,12 +140,12 @@ Para os testes que tiverem seus resultados como Falha, será gerado screenshot d
 ## Projeto API
 
 -  **1. 50 Scripts:** Foram criados 50 scripts de testes funcionais de API, para validar as funcionalidades presentes no sistema Mantis, que podem ser vistas nas classes:
-- ConfigTests
-- FiltrosTests
-- LangTests
-- ProjetosTests
-- TarefasTests
-- UsuariosTests
+-- ConfigTests
+-- FiltrosTests
+-- LangTests
+-- ProjetosTests
+-- TarefasTests
+-- UsuariosTests
 
 -  **2. Data Driven Testing:** Foi implementado um testes para a exemplificação do uso do recurso DataDriven Testing (DDT). 
 É possível verificar ao acessar as classes/métodos: 
