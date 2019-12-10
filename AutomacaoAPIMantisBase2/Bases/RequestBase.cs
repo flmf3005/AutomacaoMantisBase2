@@ -80,6 +80,12 @@ namespace AutomacaoAPIMantisBase2.Bases
         {
             this.method = method;
         }
+
+        public void SetUrl(string local)
+        {
+            if (local.Equals("PRD"))
+                url = ConfigurationManager.AppSettings["URLProd"].ToString();
+        }
         #endregion
     }
 }
