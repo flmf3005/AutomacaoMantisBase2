@@ -13,19 +13,21 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaLangEspecifico()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
+            string text = "all_projects";
             //Resultado esperado
-
+            string nameText = "All Projects";
+            string statusCodeEsperado = "OK";
             #endregion
 
-            LangRequest request = new LangRequest("all_projects");
+            LangRequest request = new LangRequest(text);
 
             IRestResponse<dynamic> response = request.ExecuteRequest();
 
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(text, response.Data["strings"][0]["name"].ToString());
+                Assert.AreEqual(nameText, response.Data["strings"][0]["localized"].ToString());
             });
         }
 
@@ -34,10 +36,8 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaLangInexistente()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-
             //Resultado esperado
-
+            string statusCodeEsperado = "OK";
             #endregion
 
             LangRequest request = new LangRequest("testes_testes");
@@ -47,6 +47,7 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual("[]", response.Data["strings"].ToString());
             });
         }
 
@@ -54,14 +55,17 @@ namespace AutomacaoAPIMantisBase2.Tests
         public void BuscaVariosLang()
         {
             #region Parameters
-            string statusCodeEsperado = "OK";
-            List<string> langs = new List<string>();
-            langs.Add("all_projects");
-            langs.Add("move_bugs");
-
+            string text1 = "all_projects";
+            string text2 = "move_bugs";
             //Resultado esperado
-
+            string nameText1 = "All Projects";
+            string nameText2 = "Move Issues";
+            string statusCodeEsperado = "OK";
             #endregion
+
+            List<string> langs = new List<string>();
+            langs.Add(text1);
+            langs.Add(text2);
 
             LangRequest request = new LangRequest(langs);
 
@@ -70,6 +74,10 @@ namespace AutomacaoAPIMantisBase2.Tests
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(statusCodeEsperado, response.StatusCode.ToString());
+                Assert.AreEqual(text1, response.Data["strings"][0]["name"].ToString());
+                Assert.AreEqual(nameText1, response.Data["strings"][0]["localized"].ToString());
+                Assert.AreEqual(text2, response.Data["strings"][1]["name"].ToString());
+                Assert.AreEqual(nameText2, response.Data["strings"][1]["localized"].ToString());
             });
         }
     }
